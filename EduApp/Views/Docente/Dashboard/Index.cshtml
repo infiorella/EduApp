@@ -1,0 +1,297 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/teacher_Layout.cshtml";
+}
+
+<div id="main">
+    <header class="mb-3">
+        <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+        </a>
+    </header>
+
+    <div class="page-heading">
+        <h3>Hola _____</h3>
+    </div>
+    <div class="page-content">
+        <section class="row">
+            <div class="col-12 col-lg-9">
+                <div class="row">
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon purple mb-2">
+                                            <i class="iconly-boldDocument"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Actividades Creadas</h6>
+                                        <h6 class="font-extrabold mb-0">112</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon blue mb-2">
+                                            <i class="iconly-boldTick-Square"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Actividades Completadas</h6>
+                                        <h6 class="font-extrabold mb-0">18</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon green mb-2">
+                                            <i class="iconly-boldUser"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Cantidad Estudiantes</h6>
+                                        <h6 class="font-extrabold mb-0">80.000</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon red mb-2">
+                                            <i class="iconly-boldCategory"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Cantidad Competencias</h6>
+                                        <h6 class="font-extrabold mb-0">112</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-lg-8 mb-1">
+                                        <h4>Avance de Competencias</h4>
+                                    </div>
+
+                                    <div class="col-lg-4 mb-1">
+                                        <div class="form-group">
+                                            <select class="choices form-select">
+                                                <option value="square">Cursos</option>
+                                                <option value="rectangle">Rectangle</option>
+                                                <option value="rombo">Rombo</option>
+                                                <option value="romboid">Romboid</option>
+                                                <option value="trapeze">Trapeze</option>
+                                                <option value="traible">Triangle</option>
+                                                <option value="polygon">Polygon</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="chart-avance-competencias"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Avance de Actividades</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <svg class="bi text-primary" width="32" height="32" fill="blue"
+                                                 style="width:10px">
+                                                <use xlink:href="~/images/bootstrap-icons.svg#circle-fill" />
+                                            </svg>
+                                            <h5 class="mb-0 ms-3">Foros</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="mb-0">8</h5>
+                                    </div>
+                                    <div class="col-12">
+                                        <div id="chart-foro"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <svg class="bi text-success" width="32" height="32" fill="blue"
+                                                 style="width:10px">
+                                                <use xlink:href="~/images/bootstrap-icons.svg#circle-fill" />
+                                            </svg>
+                                            <h5 class="mb-0 ms-3">Lectura</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="mb-0">3</h5>
+                                    </div>
+                                    <div class="col-12">
+                                        <div id="chart-lectura"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <svg class="bi text-danger" width="32" height="32" fill="blue"
+                                                 style="width:10px">
+                                                <use xlink:href="~/images/bootstrap-icons.svg#circle-fill" />
+                                            </svg>
+                                            <h5 class="mb-0 ms-3">Test</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="mb-0">10</h5>
+                                    </div>
+                                    <div class="col-12">
+                                        <div id="chart-test"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Últimas actividades calificadas</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-lg">
+                                        <thead>
+                                            <tr>
+                                                <th>Tipo</th>
+                                                <th>Descripcion</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar avatar-md">
+                                                            <img src="~/images/faces/5.jpg">
+                                                        </div>
+                                                        <p class="font-bold ms-3 mb-0">Foro</p>
+                                                    </div>
+                                                </td>
+                                                <td class="col-auto">
+                                                    <p class=" mb-0">Actividad de participación activa</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar avatar-md">
+                                                            <img src="~/images/faces/2.jpg">
+                                                        </div>
+                                                        <p class="font-bold ms-3 mb-0">Test</p>
+                                                    </div>
+                                                </td>
+                                                <td class="col-auto">
+                                                    <p class=" mb-0">
+                                                        Medir los conocimientos del curso "Historia del Perú"
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3">
+                <div class="card">
+                    <div class="card-body py-4 px-4">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-xl">
+                                <img src="~/images/faces/1.jpg" alt="Face 1">
+                            </div>
+                            <div class="ms-3 name">
+                                <h5 class="font-bold">Martinez Calderón</h5>
+                                <h6 class="text-muted mb-0">Ana María</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Alumnos Necesitantes de ayuda</h4>
+                    </div>
+                    <div class="card-content pb-4">
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="avatar avatar-lg">
+                                <img src="~/images/faces/4.jpg">
+                            </div>
+                            <div class="name ms-4">
+                                <h5 class="mb-1">Aguilar Jara</h5>
+                                <h6 class="text-muted mb-0">Maria Isabel</h6>
+                            </div>
+                        </div>
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="avatar avatar-lg">
+                                <img src="~/images/faces/5.jpg">
+                            </div>
+                            <div class="name ms-4">
+                                <h5 class="mb-1">Gomez Bustamante</h5>
+                                <h6 class="text-muted mb-0">Marcos Antonio</h6>
+                            </div>
+                        </div>
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="avatar avatar-lg">
+                                <img src="~/images/faces/1.jpg">
+                            </div>
+                            <div class="name ms-4">
+                                <h5 class="mb-1">Ortega Cando</h5>
+                                <h6 class="text-muted mb-0">Paul Fernando</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Notas</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="chart-notas"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/Docente/Dashoard/js");
+}

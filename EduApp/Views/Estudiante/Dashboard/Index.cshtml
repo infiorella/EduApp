@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/students_Layout.cshtml";
+}
+
+<div id="main">
+    <header class="mb-3">
+        <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+        </a>
+    </header>
+
+    <div class="page-heading">
+        <h3>Hola _____</h3>
+    </div>
+    <div class="page-content">
+        <section class="row">
+            <div class="col-12 col-lg-9">
+                <div class="row">
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon purple mb-2">
+                                            <i class="iconly-boldDocument"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Actividades Realizadas</h6>
+                                        <h6 class="font-extrabold mb-0">112</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon blue mb-2">
+                                            <i class="iconly-boldTick-Square"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Actividades Pendientes</h6>
+                                        <h6 class="font-extrabold mb-0">18</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon green mb-2">
+                                            <i class="iconly-boldUser"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Competencias Alcanzadas</h6>
+                                        <h6 class="font-extrabold mb-0">80.000</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <div class="stats-icon red mb-2">
+                                            <i class="iconly-boldCategory"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Competencias No Alcanzadas</h6>
+                                        <h6 class="font-extrabold mb-0">112</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-lg-3">
+                <div class="card">
+                    <div class="card-body py-4 px-4">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-xl">
+                                <img src="~/images/faces/1.jpg" alt="Face 1">
+                            </div>
+                            <div class="ms-3 name">
+                                <h5 class="font-bold">Martinez Calderón</h5>
+                                <h6 class="text-muted mb-0">Ana María</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <h4>Avance de Competencias</h4>
+                            </div>
+
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <select class="choices form-select">
+                                        <option value="square">Cursos</option>
+                                        <option value="rectangle">Rectangle</option>
+                                        <option value="rombo">Rombo</option>
+                                        <option value="romboid">Romboid</option>
+                                        <option value="trapeze">Trapeze</option>
+                                        <option value="traible">Triangle</option>
+                                        <option value="polygon">Polygon</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="chart-avance-competencias"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Últimos Comentarios</h4>
+                    </div>
+                    <div class="card-content pb-4">
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="name ms-4">
+                                <h5 class="mb-1">Lectura</h5>
+                                <h6 class="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris </h6>
+                            </div>
+                        </div>
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="name ms-4">
+                                <h5 class="mb-1">Lectura</h5>
+                                <h6 class="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Progreso de Aprendizajes</h4>
+                </div>
+                <div class="card-body">
+                    <div class="progress progress-primary  mb-4">
+                        <div class="progress-bar progress-label" role="progressbar" style="width: 35%" aria-valuenow="35"
+                             aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="progress progress-secondary  mb-4">
+                        <div class="progress-bar progress-label" role="progressbar" style="width: 25%" aria-valuenow="25"
+                             aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="progress progress-warning  mb-4">
+                        <div class="progress-bar progress-label" role="progressbar" style="width: 50%" aria-valuenow="50"
+                             aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="progress progress-danger  mb-4">
+                        <div class="progress-bar progress-label" role="progressbar" style="width: 40%" aria-valuenow="40"
+                             aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="progress progress-dark  mb-4">
+                        <div class="progress-bar progress-label" role="progressbar" style="width: 75%" aria-valuenow="75"
+                             aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="progress progress-info  mb-4">
+                        <div class="progress-bar progress-label" role="progressbar" style="width: 88%" aria-valuenow="88"
+                             aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/Docente/Dashoard/js");
+}
