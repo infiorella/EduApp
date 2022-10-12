@@ -1,4 +1,5 @@
-﻿
+﻿@model EduApp.Models.ShowLecturaModel
+
 @{
     ViewBag.Title = "ShowLectura";
     Layout = "~/Views/Shared/teacher_Layout.cshtml";
@@ -39,12 +40,24 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="card">
                             <div class="card-content">
+                                <div class="card-header">
+                                    <h5 class="card-title">@Model.actividad.TITULO</h5>
+                                </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">Titulo</h5>
-                                    <input tyoe="text" class="form-control"
-                                           placeholder="First Name" name="fname-column" />
-                                    <br />
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                                    <h5 class="card-title">Fecha de creación: @Model.actividad.FECHA_CREACION</h5>
+                                    <h5 class="card-title">Fecha Límite: @Model.actividad.FECHA_LIMITE</h5>
+                                    <span>
+                                        <span class="badge bg-warning">Satisfacción: @Model.valoracion</span>
+                                    </span>
+                                    <span>
+                                        <span class="badge bg-secondary">Estado: @Model.estado</span>
+                                    </span>
+                                    <span>
+                                        <span class="badge bg-info">Cantidad respuestas: @Model.cantidad</span>
+                                    </span>
+                                </div>
+                                <div>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10">@Model.actividad.DESCRIPCION</textarea>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +86,7 @@
                                                     <div class="d-flex w-100 justify-content-between">
                                                         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                                             Ver respuestas
-                                                        </button> 
+                                                        </button>
                                                         <button id="Comentario"
                                                                 class="btn btn-outline-secondary">
                                                             Comentario

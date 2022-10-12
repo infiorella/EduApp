@@ -39,22 +39,24 @@ namespace EduApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string usuario, string password)
+        public ActionResult Login(string DNI, string password)
         {
-            if(!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(password))
+            if(!string.IsNullOrEmpty(DNI) && !string.IsNullOrEmpty(password))
             {
-                EduApp_BDEntities db = new EduApp_BDEntities();
-                var user=db.USUARIO.FirstOrDefault(e => e.USUARIO1 == usuario && e.CONTRASEÑA == password);
+                EduApp_Entities db = new EduApp_Entities();
+                var user=db.USUARIO.FirstOrDefault(e => e.USUARIO1 == DNI && e.CONTRASEÑA == password);
                 if (user != null)
                 {
                     if(user.ROL.ID_ROL == 1)
                     {
+                        var IdDocente = db.DOCENTE.Where(e => e.ID_USUARIO == user.ID_USUARIO).Select(u=> u.ID_DOCENTE).FirstOrDefault();
                         FormsAuthentication.SetAuthCookie(user.USUARIO1, true);
+                        TempData["IdDocente"]= IdDocente;
                         return RedirectToAction("Index", "Docente");
-                    } else if(user.ROL.ID_ROL == 2)
-                    {
+                    } else if(user.ROL.ID_ROL == 2)                    {
+                        var IdAlumno = db.ALUMNO.Where(e => e.ALUMNO_USUARIO == user.ID_USUARIO).Select(u => u.ID_ALUMNO).FirstOrDefault();
                         FormsAuthentication.SetAuthCookie(user.USUARIO1, true);
-                        return RedirectToAction("Index", "Estudiante");
+                        return RedirectToAction("Index", "Estudiante", new { IdAlumno = IdAlumno});
                     }
                 }
                 else

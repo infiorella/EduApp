@@ -1,4 +1,5 @@
-﻿
+﻿@model EduApp.Models.ViewModels.COMPETENCIA
+
 @{
     ViewBag.Title = "DetalleCurso";
     Layout = "~/Views/Shared/teacher_Layout.cshtml";
@@ -34,9 +35,10 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <h4 class="card-title">Competencia A</h4>
+                                    @Html.HiddenFor(model => model.ID_COMPETENCIA)
+                                    <h4 class="card-title">@Html.DisplayFor(model => model.NOMBRE)</h4>
                                     <p class="card-text">
-                                        Esta competencia está diseñada para ___
+                                        @Html.DisplayNameFor(model => model.DETALLE)
                                     </p>
                                 </div>
                                 <img class="img-fluid w-100" src="~/images/samples/banana.jpg" alt="Card image cap">
@@ -47,10 +49,10 @@
                     <div class="col-xl-8 col-md-8 col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Competencias</h4>
+                                <h4>Tipo de Competencias</h4>
                             </div>
                             <div class="card-body">
-                                <p>Lo que se busca lograr</p>
+                                <p>@Html.DisplayNameFor(model => model.NOMBRE)</p>
                             </div>
                         </div>
                     </div>

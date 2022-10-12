@@ -16,8 +16,6 @@ namespace EduApp.Models.ViewModels
     {
         public int ID_VALORACION { get; set; }
         public string DESCRIPCION { get; set; }
-        public int ACTIVIDAD_VALOR { get; set; }
-    
-        public virtual ACTIVIDAD ACTIVIDAD { get; set; }
+        public int VALOR { get; set; }
     }
 }

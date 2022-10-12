@@ -1,54 +1,6 @@
 //CHARTS
 
-//Avance Competencias
-var optionsAvanceCompetencias = {
-	annotations: {
-		position: 'back'
-	},
-	dataLabels: {
-		enabled:false
-	},
-	chart: {
-		type: 'bar',
-		height: 300
-	},
-	fill: {
-		opacity:1
-	},
-	plotOptions: {
-	},
-	series: [{
-		name: 'Alumnos',
-		data: [9,20,30,20,10,20]
-	}],
-	colors: '#435ebe',
-	xaxis: {
-		categories: ["Competencia 1", "Competencia 2", "Competencia 3", "Competencia 4", "Competencia 5", "Competencia 6"],
-	},
-}
 
-
-//Avance Notas
-let optionsNotas  = {
-	series: [40, 30, 10,20],
-	labels: ['AD','A', 'B', 'C'],
-	colors: ['#5ddab4','#435ebe', '#55c6e8','#ff7976'],
-	chart: {
-		type: 'donut',
-		width: '100%',
-		height:'350px'
-	},
-	legend: {
-		position: 'bottom'
-	},
-	plotOptions: {
-		pie: {
-			donut: {
-				size: '30%'
-			}
-		}
-	}
-}
 
 
 //Avance de Actividades
@@ -111,11 +63,6 @@ let optionsTest = {
 
 
 
-//AVANCE DE COMPETENCIAS
-var chartAvanceCompetencias = new ApexCharts(document.querySelector("#chart-avance-competencias"), optionsAvanceCompetencias);
-
-chartAvanceCompetencias.render();
-
 
 //Avance de Actividades
 var chartForo = new ApexCharts(document.querySelector("#chart-foro"), optionsForo);
@@ -125,7 +72,3 @@ var chartTest = new ApexCharts(document.querySelector("#chart-test"), optionsTes
 chartTest.render();
 chartLectura.render();
 chartForo.render();
-
-//Avance de Notas
-var chartNotas = new ApexCharts(document.getElementById('chart-notas'), optionsNotas)
-chartNotas.render()

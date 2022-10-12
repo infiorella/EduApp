@@ -17,7 +17,8 @@ namespace EduApp.Models.ViewModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DOCENTE()
         {
-            this.CURSOS = new HashSet<CURSOS>();
+            this.ACTIVIDAD = new HashSet<ACTIVIDAD>();
+            this.COMPETENCIA_SECCION = new HashSet<COMPETENCIA_SECCION>();
         }
     
         public int ID_DOCENTE { get; set; }
@@ -34,8 +35,10 @@ namespace EduApp.Models.ViewModels
         public int ID_GRADO_SECCION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CURSOS> CURSOS { get; set; }
-        public virtual USUARIO USUARIO { get; set; }
+        public virtual ICollection<ACTIVIDAD> ACTIVIDAD { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COMPETENCIA_SECCION> COMPETENCIA_SECCION { get; set; }
         public virtual GRADO_SECCION GRADO_SECCION { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

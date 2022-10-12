@@ -1,0 +1,1201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EduApp_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_ACTIVIDAD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITULO" Type="varchar" MaxLength="80" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" />
+          <Property Name="IMAGEN" Type="varchar" MaxLength="200" />
+          <Property Name="ARCHIVO" Type="varchar" MaxLength="200" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="FECHA_ACTUALIZACION" Type="datetime" />
+          <Property Name="FECHA_LIMITE" Type="datetime" />
+          <Property Name="ESTADO" Type="int" Nullable="false" />
+          <Property Name="ACTIVIDAD_TIPO" Type="int" Nullable="false" />
+          <Property Name="ID_COMPETENCIA" Type="int" Nullable="false" />
+          <Property Name="ID_CURSO" Type="int" Nullable="false" />
+          <Property Name="ID_DOCENTE" Type="int" />
+        </EntityType>
+        <EntityType Name="ALUMNO">
+          <Key>
+            <PropertyRef Name="ID_ALUMNO" />
+          </Key>
+          <Property Name="ID_ALUMNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDO_PATERNO" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="APELLIDO_MATERNO" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="FECHA_NACIMIENTO" Type="date" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ESTADO" Type="int" Nullable="false" />
+          <Property Name="SEXO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ALUMNO_USUARIO" Type="int" Nullable="false" />
+          <Property Name="ID_GRADO_SECCION" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CALIFICACION">
+          <Key>
+            <PropertyRef Name="ID_CALIFICACION" />
+          </Key>
+          <Property Name="ID_CALIFICACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RESPUESTA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PREGUNTA" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPETENCIA">
+          <Key>
+            <PropertyRef Name="ID_COMPETENCIA" />
+          </Key>
+          <Property Name="ID_COMPETENCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="DETALLE" Type="varchar" MaxLength="1000" />
+          <Property Name="ID_CURSO" Type="int" Nullable="false" />
+          <Property Name="ALIAS" Type="nchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="COMPETENCIA_SECCION">
+          <Key>
+            <PropertyRef Name="ID_COMPETENCIASECCION" />
+          </Key>
+          <Property Name="ID_COMPETENCIASECCION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CURSO" Type="int" Nullable="false" />
+          <Property Name="ID_DOCENTE" Type="int" Nullable="false" />
+          <Property Name="PROGRESO" Type="varchar" MaxLength="40" />
+          <Property Name="ID_COMPETENCIA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CUESTIONARIO">
+          <Key>
+            <PropertyRef Name="ID_CUESTIONARIO" />
+          </Key>
+          <Property Name="ID_CUESTIONARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PREGUNTA" Type="varchar" MaxLength="280" Nullable="false" />
+          <Property Name="RESPUESTA" Type="varchar" MaxLength="280" />
+          <Property Name="OPCIONES" Type="varchar" MaxLength="500" />
+          <Property Name="ID_ACTIVIDAD" Type="int" />
+        </EntityType>
+        <EntityType Name="CURSOS">
+          <Key>
+            <PropertyRef Name="ID_CURSO" />
+          </Key>
+          <Property Name="ID_CURSO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="1000" />
+          <Property Name="HORAS" Type="int" Nullable="false" />
+          <Property Name="NIVEL" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ESTADO" Type="int" Nullable="false" />
+          <Property Name="IMAGEN" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="DETALLE_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_DETALLE" />
+          </Key>
+          <Property Name="ID_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ALUMNO" Type="int" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="int" Nullable="false" />
+          <Property Name="NOTA" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+          <Property Name="COMENTARIO" Type="nchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="DOCENTE">
+          <Key>
+            <PropertyRef Name="ID_DOCENTE" />
+          </Key>
+          <Property Name="ID_DOCENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="APELLIDO_PATERNO" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="APELLIDO_MATERNO" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CORREO" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="ESPECIALIDAD" Type="varchar" MaxLength="50" />
+          <Property Name="FECHA_NACIMIENTO" Type="datetime" Nullable="false" />
+          <Property Name="ESTADO" Type="int" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+          <Property Name="ID_GRADO_SECCION" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GRADO_SECCION">
+          <Key>
+            <PropertyRef Name="ID_GRADO_SECCION" />
+          </Key>
+          <Property Name="ID_GRADO_SECCION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GRADO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SECCION" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_TIPO_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_TIPO_ACTIVIDAD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CONTRASEÑA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ESTADO" Type="int" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="FECHA_ACTUALIZACION" Type="datetime" />
+          <Property Name="ID_ROL" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VALORACION">
+          <Key>
+            <PropertyRef Name="ID_VALORACION" />
+          </Key>
+          <Property Name="ID_VALORACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VALOR" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VALORACION_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_VALACT" />
+          </Key>
+          <Property Name="ID_VALACT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_VALORACION" Type="int" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="int" Nullable="false" />
+          <Property Name="VALOR" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="ACTIVIDAD_CALIFICACION">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="CALIFICACION" Type="Self.CALIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="CALIFICACION">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_TIPO">
+          <End Role="TIPO_ACTIVIDAD" Type="Self.TIPO_ACTIVIDAD" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_ACTIVIDAD">
+              <PropertyRef Name="ID_TIPO_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ACTIVIDAD_TIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ALUMNO_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="ALUMNO">
+              <PropertyRef Name="ALUMNO_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACTIVIDAD_CURSOS">
+          <End Role="CURSOS" Type="Self.CURSOS" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSOS">
+              <PropertyRef Name="ID_CURSO" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_CURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACTIVIDAD_DOCENTE">
+          <End Role="DOCENTE" Type="Self.DOCENTE" Multiplicity="0..1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCENTE">
+              <PropertyRef Name="ID_DOCENTE" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_DOCENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPETENCIA_SECCION_COMPETENCIA">
+          <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="1" />
+          <End Role="COMPETENCIA_SECCION" Type="Self.COMPETENCIA_SECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPETENCIA">
+              <PropertyRef Name="ID_COMPETENCIA" />
+            </Principal>
+            <Dependent Role="COMPETENCIA_SECCION">
+              <PropertyRef Name="ID_COMPETENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPETENCIA_SECCION_CURSOS">
+          <End Role="CURSOS" Type="Self.CURSOS" Multiplicity="1" />
+          <End Role="COMPETENCIA_SECCION" Type="Self.COMPETENCIA_SECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSOS">
+              <PropertyRef Name="ID_CURSO" />
+            </Principal>
+            <Dependent Role="COMPETENCIA_SECCION">
+              <PropertyRef Name="ID_CURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPETENCIA_SECCION_DOCENTE">
+          <End Role="DOCENTE" Type="Self.DOCENTE" Multiplicity="1" />
+          <End Role="COMPETENCIA_SECCION" Type="Self.COMPETENCIA_SECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCENTE">
+              <PropertyRef Name="ID_DOCENTE" />
+            </Principal>
+            <Dependent Role="COMPETENCIA_SECCION">
+              <PropertyRef Name="ID_DOCENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUESTIONARIO_ACTIVIDAD">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="0..1" />
+          <End Role="CUESTIONARIO" Type="Self.CUESTIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="CUESTIONARIO">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCENTE_GRADO_SECCION">
+          <End Role="GRADO_SECCION" Type="Self.GRADO_SECCION" Multiplicity="1" />
+          <End Role="DOCENTE" Type="Self.DOCENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRADO_SECCION">
+              <PropertyRef Name="ID_GRADO_SECCION" />
+            </Principal>
+            <Dependent Role="DOCENTE">
+              <PropertyRef Name="ID_GRADO_SECCION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VALORACION_ACTIVIDAD_ACTIVIDAD">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="VALORACION_ACTIVIDAD" Type="Self.VALORACION_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="VALORACION_ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_ACTIVIDAD">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="DETALLE_ACTIVIDAD" Type="Self.DETALLE_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="DETALLE_ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_ALUMNO">
+          <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="1" />
+          <End Role="DETALLE_ACTIVIDAD" Type="Self.DETALLE_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALUMNO">
+              <PropertyRef Name="ID_ALUMNO" />
+            </Principal>
+            <Dependent Role="DETALLE_ACTIVIDAD">
+              <PropertyRef Name="ID_ALUMNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_COMPETENCIA">
+          <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPETENCIA">
+              <PropertyRef Name="ID_COMPETENCIA" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_COMPETENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_CURSO">
+          <End Role="CURSOS" Type="Self.CURSOS" Multiplicity="1" />
+          <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSOS">
+              <PropertyRef Name="ID_CURSO" />
+            </Principal>
+            <Dependent Role="COMPETENCIA">
+              <PropertyRef Name="ID_CURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_GRADO_SECCION">
+          <End Role="GRADO_SECCION" Type="Self.GRADO_SECCION" Multiplicity="1" />
+          <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRADO_SECCION">
+              <PropertyRef Name="ID_GRADO_SECCION" />
+            </Principal>
+            <Dependent Role="ALUMNO">
+              <PropertyRef Name="ID_GRADO_SECCION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="DOCENTE" Type="Self.DOCENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="DOCENTE">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EduApp_ModelStoreContainer">
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CALIFICACION" EntityType="Self.CALIFICACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPETENCIA" EntityType="Self.COMPETENCIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPETENCIA_SECCION" EntityType="Self.COMPETENCIA_SECCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUESTIONARIO" EntityType="Self.CUESTIONARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CURSOS" EntityType="Self.CURSOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETALLE_ACTIVIDAD" EntityType="Self.DETALLE_ACTIVIDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCENTE" EntityType="Self.DOCENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GRADO_SECCION" EntityType="Self.GRADO_SECCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_ACTIVIDAD" EntityType="Self.TIPO_ACTIVIDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VALORACION" EntityType="Self.VALORACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VALORACION_ACTIVIDAD" EntityType="Self.VALORACION_ACTIVIDAD" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="ACTIVIDAD_CALIFICACION" Association="Self.ACTIVIDAD_CALIFICACION">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="CALIFICACION" EntitySet="CALIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_TIPO" Association="Self.ACTIVIDAD_TIPO">
+            <End Role="TIPO_ACTIVIDAD" EntitySet="TIPO_ACTIVIDAD" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ALUMNO_USUARIO" Association="Self.ALUMNO_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="ALUMNO" EntitySet="ALUMNO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACTIVIDAD_CURSOS" Association="Self.FK_ACTIVIDAD_CURSOS">
+            <End Role="CURSOS" EntitySet="CURSOS" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACTIVIDAD_DOCENTE" Association="Self.FK_ACTIVIDAD_DOCENTE">
+            <End Role="DOCENTE" EntitySet="DOCENTE" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPETENCIA_SECCION_COMPETENCIA" Association="Self.FK_COMPETENCIA_SECCION_COMPETENCIA">
+            <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+            <End Role="COMPETENCIA_SECCION" EntitySet="COMPETENCIA_SECCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPETENCIA_SECCION_CURSOS" Association="Self.FK_COMPETENCIA_SECCION_CURSOS">
+            <End Role="CURSOS" EntitySet="CURSOS" />
+            <End Role="COMPETENCIA_SECCION" EntitySet="COMPETENCIA_SECCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPETENCIA_SECCION_DOCENTE" Association="Self.FK_COMPETENCIA_SECCION_DOCENTE">
+            <End Role="DOCENTE" EntitySet="DOCENTE" />
+            <End Role="COMPETENCIA_SECCION" EntitySet="COMPETENCIA_SECCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUESTIONARIO_ACTIVIDAD" Association="Self.FK_CUESTIONARIO_ACTIVIDAD">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="CUESTIONARIO" EntitySet="CUESTIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCENTE_GRADO_SECCION" Association="Self.FK_DOCENTE_GRADO_SECCION">
+            <End Role="GRADO_SECCION" EntitySet="GRADO_SECCION" />
+            <End Role="DOCENTE" EntitySet="DOCENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VALORACION_ACTIVIDAD_ACTIVIDAD" Association="Self.FK_VALORACION_ACTIVIDAD_ACTIVIDAD">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="VALORACION_ACTIVIDAD" EntitySet="VALORACION_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ID_ACTIVIDAD" Association="Self.ID_ACTIVIDAD">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="DETALLE_ACTIVIDAD" EntitySet="DETALLE_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ID_ALUMNO" Association="Self.ID_ALUMNO">
+            <End Role="ALUMNO" EntitySet="ALUMNO" />
+            <End Role="DETALLE_ACTIVIDAD" EntitySet="DETALLE_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ID_COMPETENCIA" Association="Self.ID_COMPETENCIA">
+            <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ID_CURSO" Association="Self.ID_CURSO">
+            <End Role="CURSOS" EntitySet="CURSOS" />
+            <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="ID_GRADO_SECCION" Association="Self.ID_GRADO_SECCION">
+            <End Role="GRADO_SECCION" EntitySet="GRADO_SECCION" />
+            <End Role="ALUMNO" EntitySet="ALUMNO" />
+          </AssociationSet>
+          <AssociationSet Name="ID_ROL" Association="Self.ID_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="ID_USUARIO" Association="Self.ID_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="DOCENTE" EntitySet="DOCENTE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EduApp_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_ACTIVIDAD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITULO" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IMAGEN" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ARCHIVO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHA_ACTUALIZACION" Type="DateTime" Precision="3" />
+          <Property Name="FECHA_LIMITE" Type="DateTime" Precision="3" />
+          <Property Name="ESTADO" Type="Int32" Nullable="false" />
+          <Property Name="ACTIVIDAD_TIPO" Type="Int32" Nullable="false" />
+          <Property Name="ID_COMPETENCIA" Type="Int32" Nullable="false" />
+          <Property Name="ID_CURSO" Type="Int32" Nullable="false" />
+          <Property Name="ID_DOCENTE" Type="Int32" />
+          <NavigationProperty Name="CALIFICACION" Relationship="Self.ACTIVIDAD_CALIFICACION" FromRole="ACTIVIDAD" ToRole="CALIFICACION" />
+          <NavigationProperty Name="TIPO_ACTIVIDAD" Relationship="Self.ACTIVIDAD_TIPO" FromRole="ACTIVIDAD" ToRole="TIPO_ACTIVIDAD" />
+          <NavigationProperty Name="CURSOS" Relationship="Self.FK_ACTIVIDAD_CURSOS" FromRole="ACTIVIDAD" ToRole="CURSOS" />
+          <NavigationProperty Name="DOCENTE" Relationship="Self.FK_ACTIVIDAD_DOCENTE" FromRole="ACTIVIDAD" ToRole="DOCENTE" />
+          <NavigationProperty Name="CUESTIONARIO" Relationship="Self.FK_CUESTIONARIO_ACTIVIDAD" FromRole="ACTIVIDAD" ToRole="CUESTIONARIO" />
+          <NavigationProperty Name="VALORACION_ACTIVIDAD" Relationship="Self.FK_VALORACION_ACTIVIDAD_ACTIVIDAD" FromRole="ACTIVIDAD" ToRole="VALORACION_ACTIVIDAD" />
+          <NavigationProperty Name="DETALLE_ACTIVIDAD" Relationship="Self.ID_ACTIVIDAD" FromRole="ACTIVIDAD" ToRole="DETALLE_ACTIVIDAD" />
+          <NavigationProperty Name="COMPETENCIA" Relationship="Self.ID_COMPETENCIA" FromRole="ACTIVIDAD" ToRole="COMPETENCIA" />
+        </EntityType>
+        <EntityType Name="ALUMNO">
+          <Key>
+            <PropertyRef Name="ID_ALUMNO" />
+          </Key>
+          <Property Name="ID_ALUMNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO_PATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO_MATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_NACIMIENTO" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DIRECCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="Int32" Nullable="false" />
+          <Property Name="SEXO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ALUMNO_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_GRADO_SECCION" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.ALUMNO_USUARIO" FromRole="ALUMNO" ToRole="USUARIO" />
+          <NavigationProperty Name="DETALLE_ACTIVIDAD" Relationship="Self.ID_ALUMNO" FromRole="ALUMNO" ToRole="DETALLE_ACTIVIDAD" />
+          <NavigationProperty Name="GRADO_SECCION" Relationship="Self.ID_GRADO_SECCION" FromRole="ALUMNO" ToRole="GRADO_SECCION" />
+        </EntityType>
+        <EntityType Name="CALIFICACION">
+          <Key>
+            <PropertyRef Name="ID_CALIFICACION" />
+          </Key>
+          <Property Name="ID_CALIFICACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RESPUESTA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PREGUNTA" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_ACTIVIDAD" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.ACTIVIDAD_CALIFICACION" FromRole="CALIFICACION" ToRole="ACTIVIDAD" />
+        </EntityType>
+        <EntityType Name="COMPETENCIA">
+          <Key>
+            <PropertyRef Name="ID_COMPETENCIA" />
+          </Key>
+          <Property Name="ID_COMPETENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DETALLE" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ID_CURSO" Type="Int32" Nullable="false" />
+          <Property Name="ALIAS" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.ID_COMPETENCIA" FromRole="COMPETENCIA" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="COMPETENCIA_SECCION" Relationship="Self.FK_COMPETENCIA_SECCION_COMPETENCIA" FromRole="COMPETENCIA" ToRole="COMPETENCIA_SECCION" />
+          <NavigationProperty Name="CURSOS" Relationship="Self.ID_CURSO" FromRole="COMPETENCIA" ToRole="CURSOS" />
+        </EntityType>
+        <EntityType Name="COMPETENCIA_SECCION">
+          <Key>
+            <PropertyRef Name="ID_COMPETENCIASECCION" />
+          </Key>
+          <Property Name="ID_COMPETENCIASECCION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CURSO" Type="Int32" Nullable="false" />
+          <Property Name="ID_DOCENTE" Type="Int32" Nullable="false" />
+          <Property Name="PROGRESO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ID_COMPETENCIA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="COMPETENCIA" Relationship="Self.FK_COMPETENCIA_SECCION_COMPETENCIA" FromRole="COMPETENCIA_SECCION" ToRole="COMPETENCIA" />
+          <NavigationProperty Name="CURSOS" Relationship="Self.FK_COMPETENCIA_SECCION_CURSOS" FromRole="COMPETENCIA_SECCION" ToRole="CURSOS" />
+          <NavigationProperty Name="DOCENTE" Relationship="Self.FK_COMPETENCIA_SECCION_DOCENTE" FromRole="COMPETENCIA_SECCION" ToRole="DOCENTE" />
+        </EntityType>
+        <EntityType Name="CUESTIONARIO">
+          <Key>
+            <PropertyRef Name="ID_CUESTIONARIO" />
+          </Key>
+          <Property Name="ID_CUESTIONARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PREGUNTA" Type="String" MaxLength="280" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RESPUESTA" Type="String" MaxLength="280" FixedLength="false" Unicode="false" />
+          <Property Name="OPCIONES" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ID_ACTIVIDAD" Type="Int32" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.FK_CUESTIONARIO_ACTIVIDAD" FromRole="CUESTIONARIO" ToRole="ACTIVIDAD" />
+        </EntityType>
+        <EntityType Name="CURSOS">
+          <Key>
+            <PropertyRef Name="ID_CURSO" />
+          </Key>
+          <Property Name="ID_CURSO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="HORAS" Type="Int32" Nullable="false" />
+          <Property Name="NIVEL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="Int32" Nullable="false" />
+          <Property Name="IMAGEN" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.FK_ACTIVIDAD_CURSOS" FromRole="CURSOS" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="COMPETENCIA" Relationship="Self.ID_CURSO" FromRole="CURSOS" ToRole="COMPETENCIA" />
+          <NavigationProperty Name="COMPETENCIA_SECCION" Relationship="Self.FK_COMPETENCIA_SECCION_CURSOS" FromRole="CURSOS" ToRole="COMPETENCIA_SECCION" />
+        </EntityType>
+        <EntityType Name="DETALLE_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_DETALLE" />
+          </Key>
+          <Property Name="ID_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ALUMNO" Type="Int32" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="Int32" Nullable="false" />
+          <Property Name="NOTA" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="COMENTARIO" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.ID_ACTIVIDAD" FromRole="DETALLE_ACTIVIDAD" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="ALUMNO" Relationship="Self.ID_ALUMNO" FromRole="DETALLE_ACTIVIDAD" ToRole="ALUMNO" />
+        </EntityType>
+        <EntityType Name="DOCENTE">
+          <Key>
+            <PropertyRef Name="ID_DOCENTE" />
+          </Key>
+          <Property Name="ID_DOCENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRES" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO_PATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO_MATERNO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESPECIALIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_NACIMIENTO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ESTADO" Type="Int32" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_GRADO_SECCION" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.FK_ACTIVIDAD_DOCENTE" FromRole="DOCENTE" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="COMPETENCIA_SECCION" Relationship="Self.FK_COMPETENCIA_SECCION_DOCENTE" FromRole="DOCENTE" ToRole="COMPETENCIA_SECCION" />
+          <NavigationProperty Name="GRADO_SECCION" Relationship="Self.FK_DOCENTE_GRADO_SECCION" FromRole="DOCENTE" ToRole="GRADO_SECCION" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.ID_USUARIO" FromRole="DOCENTE" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="GRADO_SECCION">
+          <Key>
+            <PropertyRef Name="ID_GRADO_SECCION" />
+          </Key>
+          <Property Name="ID_GRADO_SECCION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GRADO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SECCION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ALUMNO" Relationship="Self.ID_GRADO_SECCION" FromRole="GRADO_SECCION" ToRole="ALUMNO" />
+          <NavigationProperty Name="DOCENTE" Relationship="Self.FK_DOCENTE_GRADO_SECCION" FromRole="GRADO_SECCION" ToRole="DOCENTE" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.ID_ROL" FromRole="ROL" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="TIPO_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_TIPO_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_TIPO_ACTIVIDAD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.ACTIVIDAD_TIPO" FromRole="TIPO_ACTIVIDAD" ToRole="ACTIVIDAD" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USUARIO1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTRASEÑA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="Int32" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHA_ACTUALIZACION" Type="DateTime" Precision="3" />
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ALUMNO" Relationship="Self.ALUMNO_USUARIO" FromRole="USUARIO" ToRole="ALUMNO" />
+          <NavigationProperty Name="DOCENTE" Relationship="Self.ID_USUARIO" FromRole="USUARIO" ToRole="DOCENTE" />
+          <NavigationProperty Name="ROL" Relationship="Self.ID_ROL" FromRole="USUARIO" ToRole="ROL" />
+        </EntityType>
+        <EntityType Name="VALORACION">
+          <Key>
+            <PropertyRef Name="ID_VALORACION" />
+          </Key>
+          <Property Name="ID_VALORACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VALOR" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VALORACION_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_VALACT" />
+          </Key>
+          <Property Name="ID_VALACT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_VALORACION" Type="Int32" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="Int32" Nullable="false" />
+          <Property Name="VALOR" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.FK_VALORACION_ACTIVIDAD_ACTIVIDAD" FromRole="VALORACION_ACTIVIDAD" ToRole="ACTIVIDAD" />
+        </EntityType>
+        <Association Name="ACTIVIDAD_CALIFICACION">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="CALIFICACION" Type="Self.CALIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="CALIFICACION">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACTIVIDAD_TIPO">
+          <End Role="TIPO_ACTIVIDAD" Type="Self.TIPO_ACTIVIDAD" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_ACTIVIDAD">
+              <PropertyRef Name="ID_TIPO_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ACTIVIDAD_TIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACTIVIDAD_CURSOS">
+          <End Role="CURSOS" Type="Self.CURSOS" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSOS">
+              <PropertyRef Name="ID_CURSO" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_CURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACTIVIDAD_DOCENTE">
+          <End Role="DOCENTE" Type="Self.DOCENTE" Multiplicity="0..1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCENTE">
+              <PropertyRef Name="ID_DOCENTE" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_DOCENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUESTIONARIO_ACTIVIDAD">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="0..1" />
+          <End Role="CUESTIONARIO" Type="Self.CUESTIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="CUESTIONARIO">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VALORACION_ACTIVIDAD_ACTIVIDAD">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="VALORACION_ACTIVIDAD" Type="Self.VALORACION_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="VALORACION_ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_ACTIVIDAD">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="DETALLE_ACTIVIDAD" Type="Self.DETALLE_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="DETALLE_ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_COMPETENCIA">
+          <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPETENCIA">
+              <PropertyRef Name="ID_COMPETENCIA" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="ID_COMPETENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ALUMNO_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="ALUMNO">
+              <PropertyRef Name="ALUMNO_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_ALUMNO">
+          <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="1" />
+          <End Role="DETALLE_ACTIVIDAD" Type="Self.DETALLE_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALUMNO">
+              <PropertyRef Name="ID_ALUMNO" />
+            </Principal>
+            <Dependent Role="DETALLE_ACTIVIDAD">
+              <PropertyRef Name="ID_ALUMNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_GRADO_SECCION">
+          <End Role="GRADO_SECCION" Type="Self.GRADO_SECCION" Multiplicity="1" />
+          <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRADO_SECCION">
+              <PropertyRef Name="ID_GRADO_SECCION" />
+            </Principal>
+            <Dependent Role="ALUMNO">
+              <PropertyRef Name="ID_GRADO_SECCION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPETENCIA_SECCION_COMPETENCIA">
+          <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="1" />
+          <End Role="COMPETENCIA_SECCION" Type="Self.COMPETENCIA_SECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPETENCIA">
+              <PropertyRef Name="ID_COMPETENCIA" />
+            </Principal>
+            <Dependent Role="COMPETENCIA_SECCION">
+              <PropertyRef Name="ID_COMPETENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_CURSO">
+          <End Role="CURSOS" Type="Self.CURSOS" Multiplicity="1" />
+          <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSOS">
+              <PropertyRef Name="ID_CURSO" />
+            </Principal>
+            <Dependent Role="COMPETENCIA">
+              <PropertyRef Name="ID_CURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPETENCIA_SECCION_CURSOS">
+          <End Role="CURSOS" Type="Self.CURSOS" Multiplicity="1" />
+          <End Role="COMPETENCIA_SECCION" Type="Self.COMPETENCIA_SECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSOS">
+              <PropertyRef Name="ID_CURSO" />
+            </Principal>
+            <Dependent Role="COMPETENCIA_SECCION">
+              <PropertyRef Name="ID_CURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPETENCIA_SECCION_DOCENTE">
+          <End Role="DOCENTE" Type="Self.DOCENTE" Multiplicity="1" />
+          <End Role="COMPETENCIA_SECCION" Type="Self.COMPETENCIA_SECCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCENTE">
+              <PropertyRef Name="ID_DOCENTE" />
+            </Principal>
+            <Dependent Role="COMPETENCIA_SECCION">
+              <PropertyRef Name="ID_DOCENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCENTE_GRADO_SECCION">
+          <End Role="GRADO_SECCION" Type="Self.GRADO_SECCION" Multiplicity="1" />
+          <End Role="DOCENTE" Type="Self.DOCENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRADO_SECCION">
+              <PropertyRef Name="ID_GRADO_SECCION" />
+            </Principal>
+            <Dependent Role="DOCENTE">
+              <PropertyRef Name="ID_GRADO_SECCION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="DOCENTE" Type="Self.DOCENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="DOCENTE">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ID_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EduApp_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" />
+          <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" />
+          <EntitySet Name="CALIFICACION" EntityType="Self.CALIFICACION" />
+          <EntitySet Name="COMPETENCIA" EntityType="Self.COMPETENCIA" />
+          <EntitySet Name="COMPETENCIA_SECCION" EntityType="Self.COMPETENCIA_SECCION" />
+          <EntitySet Name="CUESTIONARIO" EntityType="Self.CUESTIONARIO" />
+          <EntitySet Name="CURSOS" EntityType="Self.CURSOS" />
+          <EntitySet Name="DETALLE_ACTIVIDAD" EntityType="Self.DETALLE_ACTIVIDAD" />
+          <EntitySet Name="DOCENTE" EntityType="Self.DOCENTE" />
+          <EntitySet Name="GRADO_SECCION" EntityType="Self.GRADO_SECCION" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" />
+          <EntitySet Name="TIPO_ACTIVIDAD" EntityType="Self.TIPO_ACTIVIDAD" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <EntitySet Name="VALORACION" EntityType="Self.VALORACION" />
+          <EntitySet Name="VALORACION_ACTIVIDAD" EntityType="Self.VALORACION_ACTIVIDAD" />
+          <AssociationSet Name="ACTIVIDAD_CALIFICACION" Association="Self.ACTIVIDAD_CALIFICACION">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="CALIFICACION" EntitySet="CALIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="ACTIVIDAD_TIPO" Association="Self.ACTIVIDAD_TIPO">
+            <End Role="TIPO_ACTIVIDAD" EntitySet="TIPO_ACTIVIDAD" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACTIVIDAD_CURSOS" Association="Self.FK_ACTIVIDAD_CURSOS">
+            <End Role="CURSOS" EntitySet="CURSOS" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACTIVIDAD_DOCENTE" Association="Self.FK_ACTIVIDAD_DOCENTE">
+            <End Role="DOCENTE" EntitySet="DOCENTE" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUESTIONARIO_ACTIVIDAD" Association="Self.FK_CUESTIONARIO_ACTIVIDAD">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="CUESTIONARIO" EntitySet="CUESTIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VALORACION_ACTIVIDAD_ACTIVIDAD" Association="Self.FK_VALORACION_ACTIVIDAD_ACTIVIDAD">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="VALORACION_ACTIVIDAD" EntitySet="VALORACION_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ID_ACTIVIDAD" Association="Self.ID_ACTIVIDAD">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="DETALLE_ACTIVIDAD" EntitySet="DETALLE_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ID_COMPETENCIA" Association="Self.ID_COMPETENCIA">
+            <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ALUMNO_USUARIO" Association="Self.ALUMNO_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="ALUMNO" EntitySet="ALUMNO" />
+          </AssociationSet>
+          <AssociationSet Name="ID_ALUMNO" Association="Self.ID_ALUMNO">
+            <End Role="ALUMNO" EntitySet="ALUMNO" />
+            <End Role="DETALLE_ACTIVIDAD" EntitySet="DETALLE_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="ID_GRADO_SECCION" Association="Self.ID_GRADO_SECCION">
+            <End Role="GRADO_SECCION" EntitySet="GRADO_SECCION" />
+            <End Role="ALUMNO" EntitySet="ALUMNO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPETENCIA_SECCION_COMPETENCIA" Association="Self.FK_COMPETENCIA_SECCION_COMPETENCIA">
+            <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+            <End Role="COMPETENCIA_SECCION" EntitySet="COMPETENCIA_SECCION" />
+          </AssociationSet>
+          <AssociationSet Name="ID_CURSO" Association="Self.ID_CURSO">
+            <End Role="CURSOS" EntitySet="CURSOS" />
+            <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPETENCIA_SECCION_CURSOS" Association="Self.FK_COMPETENCIA_SECCION_CURSOS">
+            <End Role="CURSOS" EntitySet="CURSOS" />
+            <End Role="COMPETENCIA_SECCION" EntitySet="COMPETENCIA_SECCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPETENCIA_SECCION_DOCENTE" Association="Self.FK_COMPETENCIA_SECCION_DOCENTE">
+            <End Role="DOCENTE" EntitySet="DOCENTE" />
+            <End Role="COMPETENCIA_SECCION" EntitySet="COMPETENCIA_SECCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCENTE_GRADO_SECCION" Association="Self.FK_DOCENTE_GRADO_SECCION">
+            <End Role="GRADO_SECCION" EntitySet="GRADO_SECCION" />
+            <End Role="DOCENTE" EntitySet="DOCENTE" />
+          </AssociationSet>
+          <AssociationSet Name="ID_USUARIO" Association="Self.ID_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="DOCENTE" EntitySet="DOCENTE" />
+          </AssociationSet>
+          <AssociationSet Name="ID_ROL" Association="Self.ID_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EduApp_ModelStoreContainer" CdmEntityContainer="EduApp_Entities">
+          <EntitySetMapping Name="ACTIVIDAD">
+            <EntityTypeMapping TypeName="EduApp_Model.ACTIVIDAD">
+              <MappingFragment StoreEntitySet="ACTIVIDAD">
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+                <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+                <ScalarProperty Name="ARCHIVO" ColumnName="ARCHIVO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="FECHA_ACTUALIZACION" ColumnName="FECHA_ACTUALIZACION" />
+                <ScalarProperty Name="FECHA_LIMITE" ColumnName="FECHA_LIMITE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ACTIVIDAD_TIPO" ColumnName="ACTIVIDAD_TIPO" />
+                <ScalarProperty Name="ID_COMPETENCIA" ColumnName="ID_COMPETENCIA" />
+                <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+                <ScalarProperty Name="ID_DOCENTE" ColumnName="ID_DOCENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ALUMNO">
+            <EntityTypeMapping TypeName="EduApp_Model.ALUMNO">
+              <MappingFragment StoreEntitySet="ALUMNO">
+                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO_PATERNO" />
+                <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO_MATERNO" />
+                <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+                <ScalarProperty Name="ALUMNO_USUARIO" ColumnName="ALUMNO_USUARIO" />
+                <ScalarProperty Name="ID_GRADO_SECCION" ColumnName="ID_GRADO_SECCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CALIFICACION">
+            <EntityTypeMapping TypeName="EduApp_Model.CALIFICACION">
+              <MappingFragment StoreEntitySet="CALIFICACION">
+                <ScalarProperty Name="ID_CALIFICACION" ColumnName="ID_CALIFICACION" />
+                <ScalarProperty Name="RESPUESTA" ColumnName="RESPUESTA" />
+                <ScalarProperty Name="PREGUNTA" ColumnName="PREGUNTA" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPETENCIA">
+            <EntityTypeMapping TypeName="EduApp_Model.COMPETENCIA">
+              <MappingFragment StoreEntitySet="COMPETENCIA">
+                <ScalarProperty Name="ID_COMPETENCIA" ColumnName="ID_COMPETENCIA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
+                <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+                <ScalarProperty Name="ALIAS" ColumnName="ALIAS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPETENCIA_SECCION">
+            <EntityTypeMapping TypeName="EduApp_Model.COMPETENCIA_SECCION">
+              <MappingFragment StoreEntitySet="COMPETENCIA_SECCION">
+                <ScalarProperty Name="ID_COMPETENCIASECCION" ColumnName="ID_COMPETENCIASECCION" />
+                <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+                <ScalarProperty Name="ID_DOCENTE" ColumnName="ID_DOCENTE" />
+                <ScalarProperty Name="PROGRESO" ColumnName="PROGRESO" />
+                <ScalarProperty Name="ID_COMPETENCIA" ColumnName="ID_COMPETENCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUESTIONARIO">
+            <EntityTypeMapping TypeName="EduApp_Model.CUESTIONARIO">
+              <MappingFragment StoreEntitySet="CUESTIONARIO">
+                <ScalarProperty Name="ID_CUESTIONARIO" ColumnName="ID_CUESTIONARIO" />
+                <ScalarProperty Name="PREGUNTA" ColumnName="PREGUNTA" />
+                <ScalarProperty Name="RESPUESTA" ColumnName="RESPUESTA" />
+                <ScalarProperty Name="OPCIONES" ColumnName="OPCIONES" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CURSOS">
+            <EntityTypeMapping TypeName="EduApp_Model.CURSOS">
+              <MappingFragment StoreEntitySet="CURSOS">
+                <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="HORAS" ColumnName="HORAS" />
+                <ScalarProperty Name="NIVEL" ColumnName="NIVEL" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_ACTIVIDAD">
+            <EntityTypeMapping TypeName="EduApp_Model.DETALLE_ACTIVIDAD">
+              <MappingFragment StoreEntitySet="DETALLE_ACTIVIDAD">
+                <ScalarProperty Name="ID_DETALLE" ColumnName="ID_DETALLE" />
+                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+                <ScalarProperty Name="NOTA" ColumnName="NOTA" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCENTE">
+            <EntityTypeMapping TypeName="EduApp_Model.DOCENTE">
+              <MappingFragment StoreEntitySet="DOCENTE">
+                <ScalarProperty Name="ID_DOCENTE" ColumnName="ID_DOCENTE" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO_PATERNO" />
+                <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO_MATERNO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="ESPECIALIDAD" ColumnName="ESPECIALIDAD" />
+                <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_GRADO_SECCION" ColumnName="ID_GRADO_SECCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRADO_SECCION">
+            <EntityTypeMapping TypeName="EduApp_Model.GRADO_SECCION">
+              <MappingFragment StoreEntitySet="GRADO_SECCION">
+                <ScalarProperty Name="ID_GRADO_SECCION" ColumnName="ID_GRADO_SECCION" />
+                <ScalarProperty Name="GRADO" ColumnName="GRADO" />
+                <ScalarProperty Name="SECCION" ColumnName="SECCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROL">
+            <EntityTypeMapping TypeName="EduApp_Model.ROL">
+              <MappingFragment StoreEntitySet="ROL">
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_ACTIVIDAD">
+            <EntityTypeMapping TypeName="EduApp_Model.TIPO_ACTIVIDAD">
+              <MappingFragment StoreEntitySet="TIPO_ACTIVIDAD">
+                <ScalarProperty Name="ID_TIPO_ACTIVIDAD" ColumnName="ID_TIPO_ACTIVIDAD" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="EduApp_Model.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
+                <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="FECHA_ACTUALIZACION" ColumnName="FECHA_ACTUALIZACION" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VALORACION">
+            <EntityTypeMapping TypeName="EduApp_Model.VALORACION">
+              <MappingFragment StoreEntitySet="VALORACION">
+                <ScalarProperty Name="ID_VALORACION" ColumnName="ID_VALORACION" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VALORACION_ACTIVIDAD">
+            <EntityTypeMapping TypeName="EduApp_Model.VALORACION_ACTIVIDAD">
+              <MappingFragment StoreEntitySet="VALORACION_ACTIVIDAD">
+                <ScalarProperty Name="ID_VALACT" ColumnName="ID_VALACT" />
+                <ScalarProperty Name="ID_VALORACION" ColumnName="ID_VALORACION" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

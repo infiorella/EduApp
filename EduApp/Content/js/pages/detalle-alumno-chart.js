@@ -1,4 +1,4 @@
-var competenciasOptions = {
+/*var competenciasOptions = {
     series: [{
         name: 'Competencias',
         data: [80, 50, 30, 40],
@@ -19,4 +19,4 @@ var competenciasOptions = {
 var competencias = new ApexCharts(document.querySelector("#competencias-alumno"), competenciasOptions);
 
 
-competencias.render();
+competencias.render();*/

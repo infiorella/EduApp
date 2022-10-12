@@ -48,10 +48,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -137,72 +137,83 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\ACTIVIDAD.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\ShowLecturaModel.cs" />
+    <Compile Include="Models\ViewModels\VerForoModel.cs" />
+    <Compile Include="Models\ViewModels\EditarActividad.cs" />
+    <Compile Include="Models\ViewModels\ForosModel.cs" />
+    <Compile Include="Models\ViewModels\ProgresoAlumnos.cs" />
+    <Compile Include="Models\ViewModels\InformesActividadesModel.cs" />
+    <Compile Include="Models\ViewModels\InformesAvanceModel.cs" />
+    <Compile Include="Models\ViewModels\DocenteIndexModel.cs" />
+    <Compile Include="Models\ViewModels\ALUMNO.cs">
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\CALIFICACION.cs">
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\COMPETENCIA.cs">
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\COMPETENCIA_SECCION.cs">
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\CUESTIONARIO.cs">
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\CURSOS.cs">
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\DETALLE_ACTIVIDAD.cs">
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\DOCENTE.cs">
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\EduApp_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EduApp_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\EduApp_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\EduApp_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EduApp_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\GRADO_SECCION.cs">
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\InformesModel.cs" />
     <Compile Include="Models\ViewModels\ActividadModel.cs" />
-    <Compile Include="Models\ViewModels\ALUMNO.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ViewModels\AlumnoDetalleModel.cs" />
     <Compile Include="Models\ViewModels\AlumnoModel.cs" />
-    <Compile Include="Models\ViewModels\CALIFICACION.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ViewModels\COMPETENCIA.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ViewModels\CompetenciaModel.cs" />
-    <Compile Include="Models\ViewModels\CUESTIONARIO.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ViewModels\CursoModel.cs" />
-    <Compile Include="Models\ViewModels\CURSOS.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ViewModels\DETALLE_ACTIVIDAD.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ViewModels\DOCENTE.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ViewModels\DocenteModel.cs" />
-    <Compile Include="Models\ViewModels\EduAppModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EduAppModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ViewModels\EduAppModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EduAppModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ViewModels\EduAppModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EduAppModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\ViewModels\GradoSeccionModel.cs" />
-    <Compile Include="Models\ViewModels\GRADO_SECCION.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ViewModels\ROL.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\TIPO_ACTIVIDAD.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ViewModels\TIPO_COMPETENCIA.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\USUARIO.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\UsuarioModel.cs" />
     <Compile Include="Models\ViewModels\VALORACION.cs">
-      <DependentUpon>EduAppModel.tt</DependentUpon>
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\ValoracionModel.cs" />
+    <Compile Include="Models\ViewModels\VALORACION_ACTIVIDAD.cs">
+      <DependentUpon>EduApp_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4498,6 +4509,24 @@
     <Content Include="Content\extensions\toastify-js\src\toastify-es.js" />
     <Content Include="Content\extensions\toastify-js\src\toastify.css" />
     <Content Include="Content\extensions\toastify-js\src\toastify.js" />
+    <Content Include="Content\images\Cursos\Arte.jpg" />
+    <Content Include="Content\images\Cursos\Ciencia.jpg" />
+    <Content Include="Content\images\Cursos\Comunicacion.png" />
+    <Content Include="Content\images\Cursos\EducacionFisica.jpg" />
+    <Content Include="Content\images\Cursos\Ingles.jpg" />
+    <Content Include="Content\images\Cursos\Matematica.jpg" />
+    <Content Include="Content\images\Cursos\PersonalSocial.jpg" />
+    <Content Include="Content\images\Alumnos\h1.png" />
+    <Content Include="Content\images\Alumnos\h2.png" />
+    <Content Include="Content\images\Alumnos\h3.png" />
+    <Content Include="Content\images\Alumnos\h4.png" />
+    <Content Include="Content\images\Alumnos\h5.png" />
+    <Content Include="Content\images\Alumnos\m1.png" />
+    <Content Include="Content\images\Alumnos\m2.png" />
+    <Content Include="Content\images\Alumnos\m3.png" />
+    <Content Include="Content\images\Alumnos\m4.png" />
+    <Content Include="Content\images\Docentes\Docente1.jpg" />
+    <Content Include="Content\images\Docentes\Docente2.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -4505,17 +4534,8 @@
     <Content Include="Content\images\4853433.png" />
     <Content Include="Content\images\bg\4853433.png" />
     <Content Include="Content\images\bootstrap-icons.svg" />
-    <Content Include="Content\images\faces\1.jpg" />
-    <Content Include="Content\images\faces\2.jpg" />
-    <Content Include="Content\images\faces\3.jpg" />
-    <Content Include="Content\images\faces\4.jpg" />
-    <Content Include="Content\images\faces\5.jpg" />
-    <Content Include="Content\images\faces\6.jpg" />
-    <Content Include="Content\images\faces\7.jpg" />
-    <Content Include="Content\images\faces\8.jpg" />
     <Content Include="Content\images\logo\favicon.png" />
     <Content Include="Content\images\logo\favicon.svg" />
-    <Content Include="Content\images\logo\logo.png" />
     <Content Include="Content\images\logo\logo.svg" />
     <Content Include="Content\images\samples\1.png" />
     <Content Include="Content\images\samples\2.png" />
@@ -4632,15 +4652,15 @@
     <Content Include="Content\js\pages\docente-charts.js" />
     <Content Include="Content\js\pages\ui-chartjs.js" />
     <Content Include="Content\js\pages\ui-todolist.js" />
-    <Content Include="Models\ViewModels\EduAppModel.Context.tt">
+    <Content Include="Models\ViewModels\EduApp_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EduAppModel.edmx</DependentUpon>
-      <LastGenOutput>EduAppModel.Context.cs</LastGenOutput>
+      <DependentUpon>EduApp_Model.edmx</DependentUpon>
+      <LastGenOutput>EduApp_Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ViewModels\EduAppModel.tt">
+    <Content Include="Models\ViewModels\EduApp_Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EduAppModel.edmx</DependentUpon>
-      <LastGenOutput>EduAppModel.cs</LastGenOutput>
+      <DependentUpon>EduApp_Model.edmx</DependentUpon>
+      <LastGenOutput>EduApp_Model.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -4800,12 +4820,12 @@
     <Content Include="Content\extensions\toastify-js\README.md" />
     <Content Include="Content\js\extensions\skins\ui\oxide-dark\fonts\tinymce-mobile.woff" />
     <Content Include="Content\js\extensions\skins\ui\oxide\fonts\tinymce-mobile.woff" />
-    <EntityDeploy Include="Models\ViewModels\EduAppModel.edmx">
+    <EntityDeploy Include="Models\ViewModels\EduApp_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EduAppModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>EduApp_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ViewModels\EduAppModel.edmx.diagram">
-      <DependentUpon>EduAppModel.edmx</DependentUpon>
+    <Content Include="Models\ViewModels\EduApp_Model.edmx.diagram">
+      <DependentUpon>EduApp_Model.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -4857,7 +4877,7 @@
     <Content Include="Views\Docente\Cursos\EditCurso.cshtml" />
     <Content Include="Views\Docente\Cursos\CompetenciaDetalle.cshtml" />
     <Content Include="Views\Docente\Cursos\EditCompetencia.cshtml" />
-    <Content Include="Views\Docente\Alumnos\EditAlumno.cshtml" />
+    <Content Include="Views\Docente\Alumnos\AddAlumno.cshtml" />
     <Content Include="Views\Docente\Actividades\AddForo.cshtml" />
     <Content Include="Views\Docente\Actividades\EditarForo.cshtml" />
     <Content Include="Views\Docente\Reportes\Reportes.cshtml" />
@@ -4866,7 +4886,10 @@
     <Content Include="Views\Docente\Actividades\ShowLectura.cshtml" />
     <Content Include="Views\Estudiante\Actividades\Foro.cshtml" />
     <Content Include="Views\Estudiante\Actividades\Lecturas.cshtml" />
+    <Content Include="Views\Docente\Cursos\View.cshtml" />
+    <Content Include="Views\Docente\Alumnos\AddAlumnoAntiguo.cshtml" />
     <Content Include="Views\Docente\Alumnos\View.cshtml" />
+    <Content Include="Views\Docente\Actividades\View.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

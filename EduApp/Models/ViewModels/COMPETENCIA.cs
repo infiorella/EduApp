@@ -18,18 +18,19 @@ namespace EduApp.Models.ViewModels
         public COMPETENCIA()
         {
             this.ACTIVIDAD = new HashSet<ACTIVIDAD>();
+            this.COMPETENCIA_SECCION = new HashSet<COMPETENCIA_SECCION>();
         }
     
         public int ID_COMPETENCIA { get; set; }
         public string NOMBRE { get; set; }
         public string DETALLE { get; set; }
-        public string PROGRESO { get; set; }
         public int ID_CURSO { get; set; }
-        public int ID_TIPO_COMPETENCIA { get; set; }
+        public string ALIAS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ACTIVIDAD> ACTIVIDAD { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COMPETENCIA_SECCION> COMPETENCIA_SECCION { get; set; }
         public virtual CURSOS CURSOS { get; set; }
-        public virtual TIPO_COMPETENCIA TIPO_COMPETENCIA { get; set; }
     }
 }

@@ -35,7 +35,7 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Cantidad de actividades desarrollados por curso</h4>
+                                <h4>Cantidad de actividades desarrollados por mes</h4>
                             </div>
                             <div class="card-body">
                                 <div id="actividades-desarrolladas"></div>
@@ -87,7 +87,7 @@
                                 <div id="avance-competencias"></div>
                             </div>
                             <div class="card-body">
-                                <p>Se considera a aquellos alumnos que sacaron AD o A en ls competencias</p>
+                                <p>Se considera a aquellos alumnos que sacaron AD o A en las competencias</p>
                             </div>
                         </div>
                     </div>
@@ -98,6 +98,9 @@
                             </div>
                             <div class="card-body">
                                 <div id="progreso-notas"></div>
+                            </div>
+                            <div class="card-body">
+                                <p>Promedio: Cantidad de notas sobre la cantidad de actividades</p>
                             </div>
                         </div>
                     </div>
@@ -110,4 +113,167 @@
 @section Scripts
 {
     @Scripts.Render("~/Content/ApexCharts/js");
+
+    <script>
+
+        //Cantidad de actividades desarrollados por curso
+        var actividadesOptions = {
+            series: [
+                {
+                    name: "Foro",
+                    data: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+                },
+                {
+                    name: "Test",
+                    data: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+                },
+                {
+                    name: "Lectura",
+                    data: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+                },
+            ],
+            chart: {
+                height: 350,
+                type: "area",
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            stroke: {
+                curve: "smooth",
+            },
+            xaxis: {
+                categories: [
+                    "Marzo",
+                    "Abril",
+                    "Mayo",
+                    "Junio",
+                    "Julio",
+                    "Agosto",
+                    "Septiembre",
+                    "Octubre",
+                    "Noviembre",
+                    "Diciembre"
+                ],
+            },
+            tooltip: {
+            },
+        };
+
+        var actividades = new ApexCharts(document.querySelector("#actividades-desarrolladas"), actividadesOptions);
+        actividades.render();
+
+
+
+        //Satisfacción de estudiantes por actividad
+        //Aquellos que calificaron de  4 a 5
+        var satisfaccionOptions = {
+            series: [16, 15 , 13],
+            chart: {
+                width: 330,
+                type: 'pie',
+            },
+            legend: {
+                position: 'bottom'
+            },
+            labels: ['Foro', 'Test', 'Lectura'],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    }
+                },
+            }]
+        };
+        var satisfaccion = new ApexCharts(document.querySelector("#satisfaccion-actividad"), satisfaccionOptions);
+        satisfaccion.render();
+
+
+
+        //Avance de competencias
+        var avanceOptions = {
+            chart: {
+                type: "line",
+            },
+            series: [
+                {
+                    name: "Alumnos",
+                    data: [0, 0, 0, 0, 0, 0, 14, 0,0,0],
+                },
+            ],
+            xaxis: {
+                categories: ["Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+            },
+        };
+
+        var avance = new ApexCharts(document.querySelector("#avance-competencias"), avanceOptions);
+        avance.render();
+
+
+        //Progreso de notas por mes
+        //Sacar promedio segun cantidad de actividades
+        //Progreso de notas por mes
+        var progresoOptions = {
+            series: [{
+                name: 'AD',
+                data: [0,0,0,0,0,0, 12.3 ,0,0,0]
+            }, {
+                name: 'A',
+                data: [0, 0, 0, 0, 0, 0, 4, 0, 0, 0]
+            }, {
+                name: 'B',
+                data: [0, 0, 0, 0, 0, 0, 5.3, 0, 0, 0]
+            }, {
+                name: 'C',
+                data: [0, 0, 0, 0, 0, 0, 6, 0, 0, 0]
+            }],
+            chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+                toolbar: {
+                    show: true
+                },
+                zoom: {
+                    enabled: true
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                    }
+                }
+            }],
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    borderRadius: 10
+                },
+            },
+            xaxis: {
+                categories: ['Marzo', 'Abril', 'Mayo', 'Junio',
+                    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' 
+                ],
+            },
+            legend: {
+                position: 'right',
+                offsetY: 40
+            },
+            fill: {
+                opacity: 1
+            }
+        };
+
+
+
+
+        var progreso = new ApexCharts(document.querySelector("#progreso-notas"), progresoOptions);
+        progreso.render();
+
+    </script>
 }

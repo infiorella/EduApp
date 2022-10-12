@@ -1,4 +1,4 @@
-﻿@model EduApp.Models.ActividadModel
+﻿@model EduApp.Models.EditarActividadModel
 
 @{
     ViewBag.Title = "AddForo";
@@ -40,13 +40,35 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Titulo</h4>
-                                <input type="text" class="form-control"
-                                       placeholder="First Name" name="fname-column" />
+                                <h4 class="card-title">Foro</h4>
+                                @Html.LabelFor(model => model.actividad.TITULO, "Título", htmlAttributes: new { @class = "control-label col-md-6" })
+
+                                @Html.EditorFor(model => model.actividad.TITULO, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.actividad.TITULO, "", new { @class = "text-danger" })
+                                <br />
+
+
+                                @Html.LabelFor(model => model.actividad.FECHA_LIMITE, "Fecha Límite", htmlAttributes: new { @class = "control-label col-md-6" })
+                                @Html.EditorFor(model => model.actividad.FECHA_LIMITE, new { htmlAttributes = new { type = "datetime-local", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.actividad.FECHA_LIMITE, "", new { @class = "text-danger" })
+                                <br />
+
+                                @Html.LabelFor(model => model.actividad.ID_CURSO, "Curso", htmlAttributes: new { @class = "control-label col-md-6" })
+                                @Html.DropDownListFor(x => Model.actividad.ID_CURSO, (Model.cursos), htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.actividad.ID_CURSO, "", new { @class = "text-danger" })
+                                <br />
+
+                                @Html.LabelFor(model => model.actividad, "Competencia", htmlAttributes: new { @class = "control-label col-md-6" })
+                                @Html.DropDownListFor(x => Model.actividad.ID_COMPETENCIA, (Model.competencias), htmlAttributes: new { @id="competencia",@class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.actividad, "", new { @class = "text-danger" })
+
                             </div>
+
+
                             <div class="card-body">
+                                <h4 class="card-title">Detalle actividad</h4>
                                 <div id="editor">
-                                    <p>This is some sample content.</p>
+                                    <p>Detalle de actividad</p>
                                 </div>
                             </div>
 
@@ -66,7 +88,18 @@
 @section Scripts
 {
     <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
-    <script src="~/js/pages/ckeditor.js"></script>
+    <script src="~/Content/js/pages/ckeditor.js"></script>
 
+    <script>
+        /*function getDatosCompetencias() {
+            $.post("/Docente/GetCompetencias",
+                { IdCurso: curso.value },
+                function (response) {
+                    var select = $('#competencia');
+                    select.
 
+                }
+            );
+        }*/
+    </script>
 }

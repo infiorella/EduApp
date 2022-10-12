@@ -1,4 +1,5 @@
-﻿
+﻿@model EduApp.Models.EditarActividadModel
+
 @{
     ViewBag.Title = "EditarForo";
     Layout = "~/Views/Shared/teacher_Layout.cshtml";
@@ -18,7 +19,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Foro</h3>
+                        <h3>Editar Foro</h3>
                     </div>
                     <div class="col-12 col-md-6 order-md-2 order-first">
                         <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -33,17 +34,46 @@
         </div>
 
         <section class="section">
+            @Html.AntiForgeryToken()
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Titulo</h4>
-                            <input tyoe="text" class="form-control"
-                                                           placeholder="First Name" name="fname-column"/>
+                            <h4 class="card-title">Foro</h4>
+                            @Html.LabelFor(model => model.actividad.TITULO, "Título",htmlAttributes: new { @class = "control-label col-md-2" })
+
+                            @Html.EditorFor(model => model.actividad.TITULO, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.actividad.TITULO, "", new { @class = "text-danger" })
+
                         </div>
                         <div class="card-body">
+                            <div class="row">
+                                @Html.LabelFor(model => model.actividad.FECHA_LIMITE, "Fecha Límite",htmlAttributes: new { @class = "control-label col-md-6" })
+
+                                @Html.EditorFor(model => model.actividad.FECHA_LIMITE,new { htmlAttributes = new { type = "datetime-local", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.actividad.FECHA_LIMITE, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="row">
+                                @Html.LabelFor(model => model.actividad.ID_CURSO, "Curso", htmlAttributes: new { @class = "control-label col-md-6" })
+
+                                @Html.DropDownListFor(x=> Model.actividad.ID_CURSO, (Model.cursos), htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.actividad.ID_CURSO, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="row">
+                                @Html.LabelFor(model => model.actividad, "Competencia", htmlAttributes: new { @class = "control-label col-md-6" })
+
+                                @Html.DropDownListFor(x=> Model.actividad.ID_COMPETENCIA, (Model.competencias), htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.actividad, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <br />
                             <div id="editor">
-                                <p>This is some sample content.</p>
+                                @Model.actividad.DESCRIPCION
                             </div>
                         </div>
 
@@ -55,15 +85,15 @@
                     </div>
                 </div>
             </div>
+            }
+        </section>
     </div>
-    </section>
-</div>
 </div>
 
 @section Scripts
 {
     <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
-    <script src="~/js/pages/ckeditor.js"></script>
+    <script src="~/Content/js/pages/ckeditor.js"></script>
 
 
 }

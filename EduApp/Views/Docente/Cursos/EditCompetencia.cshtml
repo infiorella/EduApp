@@ -1,4 +1,6 @@
-﻿<!-- // Basic multiple Column Form section start -->
+﻿@model EduApp.Models.ViewModels.
+
+<!-- // Basic multiple Column Form section start -->
 <section id="multiple-column-form">
     <div class="row match-height">
         <div class="col-12">
@@ -14,13 +16,13 @@
                                     <div class="form-group">
                                         <label for="first-name-column">Nombre</label>
                                         <input type="text" id="first-name-column" class="form-control"
-                                               placeholder="First Name" name="fname-column">
+                                               value="@Model.NOMBRE" placeholder="First Name" name="fname-column">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="last-name-column">Descripcion</label>
-                                        <textarea class="form-control" id="company-column" rows="3"></textarea>
+                                        <textarea class="form-control" value="@Model.DETALLE" id="company-column" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">

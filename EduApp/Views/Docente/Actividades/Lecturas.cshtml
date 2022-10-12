@@ -45,19 +45,22 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <h4 class="card-title"><a href="@Url.Action("ShowLectura", "Docente",  new { id = item.ID_ACTIVIDAD }, null)"> @Html.DisplayFor(modelItem => item.TITULO)</a></h4>
+                                        <h4 class="card-title"><a href="@Url.Action("ShowLectura", "Docente", new { id = item.ID_ACTIVIDAD }, null)"> @Html.DisplayFor(modelItem => item.TITULO)</a></h4>
                                         <p> Fecha Creación: @Html.DisplayFor(modelItem => item.FECHA_CREACION)</p>
                                         <p class="card-text">
                                             @Html.DisplayFor(modelItem => item.DESCRIPCION)
                                         </p>
                                     </div>
-                                    <img class="img-fluid w-100" src=" @Html.DisplayFor(modelItem => item.IMAGEN)" alt="Card image cap">
+                                    <img class="img-fluid w-100" src="~/Content/images/samples/banana.jpg" alt="Card image cap">
+
+
+
                                 </div>
                                 <div class="card-footer d-flex justify-content-between">
                                     <span>Plazo:  @Html.DisplayFor(modelItem => item.FECHA_LIMITE)</span>
-                                    <a href="@Url.Action("EditLectura", "Docente", new { id = item.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-secondary"><i data-feather="edit"></i> Editar</a>
-                                    <a href="@Url.Action("ShowTest", "Docente",  new { id = item.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-primary"><i data-feather="eye"></i> Visualizar</a>
-                                    <a href="@Url.Action("DeleteTest", "Docente" , new { id = item.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-danger"><i data-feather="eye"></i> Eliminar</a>
+                                    <a href="@Url.Action("EditLectura", "Docente", new { id = item.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-secondary"><i data-feather="edit"></i></a>
+                                    <a href="@Url.Action("ShowLectura", "Docente",  new { id = item.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-primary"><i data-feather="eye"></i> </a>
+                                    @*<a href="@Url.Action("DeleteLectura", "Docente" , new { id = item.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-danger"><i data-feather="eye"></i> </a>*@
                                 </div>
                             </div>
 

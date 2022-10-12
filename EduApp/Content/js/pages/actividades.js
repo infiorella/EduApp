@@ -2,13 +2,13 @@
 var actividadesOptions = {
     series: [{
         name: 'Foro',
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+        data: [0, 0, 0,0,0,0,1,0,0,0]
     }, {
         name: 'Test',
-        data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+        data: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
     }, {
         name: 'Lectura',
-        data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+        data: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
     }],
     chart: {
         type: 'bar',
@@ -30,7 +30,7 @@ var actividadesOptions = {
         colors: ['transparent']
     },
     xaxis: {
-        categories: ['Marzo', 'Abrl', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre'],
+        categories: ['Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
     },
     yaxis: {
         title: {
@@ -53,15 +53,25 @@ var actividadesOptions = {
 var actividadesResultadosOptions = {
     series: [
          {
-            name: "A",
-            data: [28, 29, 33]
+            name: "AD",
+            data: [12, 9, 14]
         },
         {
+            name: "A",
+            data: [9, 13, 4]
+        }
+        ,
+        {
             name: "B",
-            data: [12, 11, 14]
+            data: [5, 6, 8]
+        }
+        ,
+        {
+            name: "C",
+            data: [4, 2, 4]
         }
     ],
-    colors: ['#77B6EA', '#545454'],
+    colors: ['#77B6EA', '#545454', '#5d8db3', '#e3df7b' ],
     chart: {
         height: 350,
         type: 'line',

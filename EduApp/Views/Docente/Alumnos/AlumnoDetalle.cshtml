@@ -63,7 +63,7 @@
                                         </div>
                                         <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-3" style="padding-left:5%">
                                             <h6 class="text-muted font-semibold">Actividades Realizadas</h6>
-                                            <h6 class="font-extrabold mb-0">11</h6>
+                                            <h6 class="font-extrabold mb-0">@Model.cantidadActividades</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
                                         </div>
                                         <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-3" style="padding-left:3%">
                                             <h6 class="text-muted font-semibold">Cursos sin logro alcanzado</h6>
-                                            <h6 class="font-extrabold mb-0">1</h6>
+                                            <h6 class="font-extrabold mb-0">@Model.cursosSinLogroAlcanzado</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -101,14 +101,12 @@
 
                                     <div class="col-lg-4 mb-1">
                                         <div class="form-group">
-                                            <select class="choices form-select">
-                                                <option value="square">Cursos</option>
-                                                <option value="rectangle">Rectangle</option>
-                                                <option value="rombo">Rombo</option>
-                                                <option value="romboid">Romboid</option>
-                                                <option value="trapeze">Trapeze</option>
-                                                <option value="traible">Triangle</option>
-                                                <option value="polygon">Polygon</option>
+                                            <select id="cursos" class="choices form-select">
+                                                <option value="">Cursos</option>
+                                                @foreach (var curso in Model.cursos)
+                                                {
+                                                    <option value="@curso.ID_CURSO">@curso.NOMBRE</option>
+                                                }
                                             </select>
                                         </div>
                                     </div>
@@ -132,8 +130,7 @@
                             <div class="card-content pb-4">
                                 <div class="recent-message d-flex px-4 py-3">
                                     <div class="avatar avatar-lg">
-                                        <h5 class="mb-1">@e.ACTIVIDAD.TIPO_ACTIVIDAD</h5>
-                                        <i class="bi bi-card-heading"></i>
+                                        <h5 class="mb-1">@e.ACTIVIDAD.TIPO_ACTIVIDAD.NOMBRE</h5>
                                     </div>
                                     <div class="name ms-4">
                                         <h5 class="mb-1">@e.ACTIVIDAD.TITULO</h5>
@@ -161,32 +158,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach (var actividad in Model.TodasActividades)
+                                                {
                                                 <tr>
-                                                    <td>Graiden</td>
-                                                    <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                                    <td>076 4820 8838</td>
-                                                    <td>Offenburg</td>
+                                                    <td>@actividad.ACTIVIDAD.CURSOS.NOMBRE</td>
+                                                    <td>@actividad.ACTIVIDAD.COMPETENCIA.NOMBRE</td>
+                                                    <td>@actividad.NOTA</td>
+                                                    <td>@actividad.COMENTARIO</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Dale</td>
-                                                    <td>fringilla.euismod.enim@quam.ca</td>
-                                                    <td>0500 527693</td>
-                                                    <td>New Quay</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nathaniel</td>
-                                                    <td>mi.Duis@diam.edu</td>
-                                                    <td>(012165) 76278</td>
-                                                    <td>Grumo Appula</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Darius</td>
-                                                    <td>velit@nec.com</td>
-                                                    <td>0309 690 7871</td>
-                                                    <td>Ways</td>
-                                                </tr>
-
-
+                                                }                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -214,6 +194,49 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.js"></script>
 
     <script>
+        var competenciasOptions = {
+            series: [{
+                name: 'Competencias',
+                data: [20, 15, 10, 05],
+            }],
+            chart: {
+                height: 330,
+                type: 'radar',
+            },
+            title: {
+                //text: 'Basic Radar Chart'
+            },
+            xaxis: {
+                categories: ['Competencia 1', 'Competencia 2', 'Competencia 3', 'Competencia 4']
+            }
+        };
+        var competencias = new ApexCharts(document.querySelector("#competencias-alumno"), competenciasOptions);
+        competencias.render();
+
+
+
+        const curso = document.getElementById('cursos');
+        curso.addEventListener('change', getDatosCompetencias);
+
+
+        var VBIdAlumno = '@Model.Alumno.ID_ALUMNO'
+        function getDatosCompetencias() {
+            $.post("/Docente/GetChartCompetenciasAlumnoDetalle",
+                { IdCurso: curso.value , IdAlumno: VBIdAlumno },
+                function (response) {
+                    competencias .updateOptions({
+                        series: [{
+                            name: 'Competencias',
+                            data: response.data,
+                        }],
+                        xaxis: {
+                            categories: response.labels
+                        }
+                    })
+                }
+            );
+        }
+
 
         $(document).ready(function () {
             $("#datatable").DataTable({

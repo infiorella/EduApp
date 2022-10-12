@@ -1,4 +1,5 @@
-﻿
+﻿@model EduApp.Models.InformesActividadesModel
+
 @{
     ViewBag.Title = "Actividades";
     Layout = "~/Views/Shared/teacher_Layout.cshtml";
@@ -43,7 +44,7 @@ ESCALA DE LIKERT--->
                                     </div>
                                     <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-3" style="padding-left:5%">
                                         <h6 class="text-muted font-semibold">Cantidad Creadas Totales</h6>
-                                        <h6 class="font-extrabold mb-0">11</h6>
+                                        <h6 class="font-extrabold mb-0">@Model.cantidadCreadas</h6>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +61,7 @@ ESCALA DE LIKERT--->
                                     </div>
                                     <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-3" style="padding-left:5%">
                                         <h6 class="text-muted font-semibold">Actividades Finalizadas</h6>
-                                        <h6 class="font-extrabold mb-0">6</h6>
+                                        <h6 class="font-extrabold mb-0">@Model.cantidadCompletadas</h6>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +78,7 @@ ESCALA DE LIKERT--->
                                     </div>
                                     <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-3" style="padding-left:5%">
                                         <h6 class="text-muted font-semibold">Actividades con Logro Alcanzado</h6>
-                                        <h6 class="font-extrabold mb-0">11</h6>
+                                        <h6 class="font-extrabold mb-0">@Model.actividadesLogroAlcanzado</h6>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +95,7 @@ ESCALA DE LIKERT--->
                                     </div>
                                     <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-3" style="padding-left:5%">
                                         <h6 class="text-muted font-semibold">Actividades sin logro alcanzado</h6>
-                                        <h6 class="font-extrabold mb-0">11</h6>
+                                        <h6 class="font-extrabold mb-0">@Model.actividadesSinLogroAlcanzado</h6>
                                     </div>
                                 </div>
                             </div>
@@ -196,13 +197,13 @@ ESCALA DE LIKERT--->
                                 fontSize: '28',
                                 alignment: 'center'
                             },
-                            doc.styles.tableHeader = {
-                                bold: true,
-                                fontSize: 11,
-                                fillColor: '#DF0101',
-                                color: 'white',
-                                alignment: 'center'
-                            },
+                                doc.styles.tableHeader = {
+                                    bold: true,
+                                    fontSize: 11,
+                                    fillColor: '#DF0101',
+                                    color: 'white',
+                                    alignment: 'center'
+                                },
                                 doc.content.splice(1, 0, {
                                     margin: [0, 0, 0, 12],
                                     alignment: 'center',

@@ -14,5 +14,13 @@ namespace EduApp.Models.ViewModels
 
         //COMPETENCIAS
         public COMPETENCIA Competencia { get; set; }
+
+
+        public List<CURSOS> cursos { get; set; }
+
+        public int  cantidadActividades { get; set; }
+        public int cursosSinLogroAlcanzado { get; set; }
+
+        public List<DETALLE_ACTIVIDAD> TodasActividades { get; set; }
     }
 }

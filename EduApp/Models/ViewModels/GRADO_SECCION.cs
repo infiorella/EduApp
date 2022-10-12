@@ -18,7 +18,6 @@ namespace EduApp.Models.ViewModels
         public GRADO_SECCION()
         {
             this.ALUMNO = new HashSet<ALUMNO>();
-            this.CURSOS = new HashSet<CURSOS>();
             this.DOCENTE = new HashSet<DOCENTE>();
         }
     
@@ -28,8 +27,6 @@ namespace EduApp.Models.ViewModels
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ALUMNO> ALUMNO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CURSOS> CURSOS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DOCENTE> DOCENTE { get; set; }
     }

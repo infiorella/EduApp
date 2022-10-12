@@ -9,22 +9,14 @@ namespace EduApp.Models
     public class CursoModel
     {
         public CURSOS curso;
-        public CursoDetalleModel cursoDetalle;
 
         public List<COMPETENCIA> listCompetencia { get; set; }
 
+        public List<int> progresoCompetencias { get; set; }
+        public int aprobado { get; set; }
+        public int desaprobado { get; set; }
 
-        public class CursoDetalleModel {
-            public int CantidadAprobado { get; set; }
-            public int CantidadDesaprobado { get; set; }
-
-
-            public CursoDetalleModel(int CantidadAprobados, int CantidadDesaprobados)
-            {
-                CantidadAprobado = CantidadAprobados;
-                CantidadDesaprobado = CantidadDesaprobados;
-            }
-        }
 
     }
+
 }

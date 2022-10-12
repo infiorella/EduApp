@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EduApp.Models.ViewModels.ACTIVIDAD>
+﻿@model List<EduApp.Models.ViewModels.ForosModel>
 
 @{
     ViewBag.Title = "Foros";
@@ -54,24 +54,24 @@
 
                                             <div class="card-header">
                                                 <div class="d-flex w-100 justify-content-between">
-                                                    <h5 class="mb-1">@Html.DisplayFor(modelItem => item.TITULO)</h5>
+                                                    <h5 class="mb-1">@Html.DisplayFor(modelItem => item.actividad.TITULO)</h5>
                                                     <span>
-                                                        <span class="badge bg-warning">Curso</span>
+                                                        <span class="badge bg-warning">@item.valoracion</span>
                                                         <span class="badge bg-success">
-                                                            <span class="badge bg-transparent"> @Html.DisplayFor(modelItem => item.CURSOS.NOMBRE)</span>
+                                                            <span class="badge bg-transparent"> @Html.DisplayFor(modelItem => item.actividad.CURSOS.NOMBRE)</span>
                                                         </span>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h6>Fech Creación: @Html.DisplayFor(modelItem => item.FECHA_CREACION)</h6>
-                                                <h6>Fech Disponible:  @Html.DisplayFor(modelItem => item.FECHA_LIMITE)</h6>
+                                                <h6>Fech Creación: @Html.DisplayFor(modelItem => item.actividad.FECHA_CREACION)</h6>
+                                                <h6>Fech Disponible:  @Html.DisplayFor(modelItem => item.actividad.FECHA_LIMITE)</h6>
 
-                                                <p class="text-muted"> @Html.DisplayFor(modelItem => item.DESCRIPCION)</p>
+                                                <p class="text-muted"> @Html.DisplayFor(modelItem => item.actividad.DESCRIPCION)</p>
                                                 <div class="buttons">
-                                                    <a href="@Url.Action("EditForo", "Docente",  new { id = item.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-secondary"><i data-feather="edit"></i> Editar</a>
-                                                    <a href="@Url.Action("VerForo", "Docente",  new { id = item.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-primary"><i data-feather="eye"></i> Visualizar</a>
-                                                    <a href="@Url.Action("DeleteForo", "Docente",  new { id = item.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-danger"><i data-feather="eye"></i> Elimiinar</a>
+                                                    <a href="@Url.Action("EditForo", "Docente",  new { id = item.actividad.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-secondary"><i data-feather="edit"></i> Editar</a>
+                                                    <a href="@Url.Action("VerForo", "Docente",  new { id = item.actividad.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-primary"><i data-feather="eye"></i> Visualizar</a>
+                                                    <a href="@Url.Action("DeleteForo", "Docente",  new { id = item.actividad.ID_ACTIVIDAD }, null)" class="btn icon icon-left btn-danger"><i data-feather="eye"></i> Elimiinar</a>
                                                 </div>
                                             </div>
                                         </div>
