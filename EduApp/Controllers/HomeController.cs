@@ -56,7 +56,8 @@ namespace EduApp.Controllers
                     } else if(user.ROL.ID_ROL == 2)                    {
                         var IdAlumno = db.ALUMNO.Where(e => e.ALUMNO_USUARIO == user.ID_USUARIO).Select(u => u.ID_ALUMNO).FirstOrDefault();
                         FormsAuthentication.SetAuthCookie(user.USUARIO1, true);
-                        return RedirectToAction("Index", "Estudiante", new { IdAlumno = IdAlumno});
+                        TempData["IdAlumno"] = IdAlumno;
+                        return RedirectToAction("Index", "Estudiante");
                     }
                 }
                 else
@@ -75,6 +76,7 @@ namespace EduApp.Controllers
         [Authorize]
         public ActionResult LogOut()
         {
+            Session.Abandon();
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
         }

@@ -4,38 +4,45 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fd55264c33c44d97a163f9397fd25027" Name="Diagram1">
-        <EntityTypeShape EntityType="Colegio_BDModel.ACTIVIDAD" Width="1.5" PointX="13.5" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.ALUMNO" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.CALIFICACION" Width="1.5" PointX="15.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.COMPETENCIA" Width="1.5" PointX="11.25" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.CUESTIONARIO" Width="1.5" PointX="11.25" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.CURSOS" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.DETALLE_ACTIVIDAD" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.DOCENTE" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.GRADO_SECCION" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.ROL" Width="1.5" PointX="1.5" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.TIPO_ACTIVIDAD" Width="1.5" PointX="11.25" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.TIPO_COMPETENCIA" Width="1.5" PointX="9" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.USUARIO" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="Colegio_BDModel.VALORACION" Width="1.5" PointX="15.75" PointY="8.125" IsExpanded="true" />
-        <AssociationConnector Association="Colegio_BDModel.ACTIVIDAD_CALIFICACION" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ACTIVIDAD_TIPO" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ACTIVIDAD_VALOR" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ID_ACTIVIDAD" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ID_COMPETENCIA" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ID_CUESTIONARIO" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ALUMNO_USUARIO" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ID_ALUMNO" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ID_GRADO_SECCION" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ID_CURSO" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ID_TIPO_COMPETENCIA" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.GRADO_SECCION_CURSO" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ID_DOCENTE" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ID_USUARIO" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.ID_ROL" ManuallyRouted="false" />
-        <AssociationConnector Association="Colegio_BDModel.FK_ACTIVIDAD_CURSOS" />
-        <AssociationConnector Association="Colegio_BDModel.FK_DOCENTE_GRADO_SECCION" />
+      <Diagram DiagramId="5ad658d5a4584a13855cb5df1b298af1" Name="Diagram1">
+        <EntityTypeShape EntityType="EduAppModel.ACTIVIDAD" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.ALUMNO" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.CALIFICACION" Width="1.5" PointX="9.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.CAPACIDADES" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.COMPETENCIA" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.COMPETENCIA_SECCION" Width="1.5" PointX="8.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.CUESTIONARIO" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.CURSOS" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.DETALLE_ACTIVIDAD" Width="1.5" PointX="10.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.DOCENTE" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.GRADO_SECCION" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.ROL" Width="1.5" PointX="1.5" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.TIPO_ACTIVIDAD" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.USUARIO" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.VALORACION" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduAppModel.VALORACION_ACTIVIDAD" Width="1.5" PointX="7.5" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="EduAppModel.ACTIVIDAD_TIPO" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.FK_ACTIVIDAD_CURSOS" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.FK_ACTIVIDAD_DOCENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.FK_CUESTIONARIO_ACTIVIDAD" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.FK_VALORACION_ACTIVIDAD_ACTIVIDAD1" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.ID_ACTIVIDAD" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.ID_COMPETENCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.ALUMNO_CALIFICACION" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.ALUMNO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.ID_ALUMNO" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.ID_GRADO_SECCION" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.CUESTIONARIO_CALIFICACION" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.DETALLEACTIVIDAD_CALIFICACION" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.FK_COMPETENCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.FK_COMPETENCIA_SECCION_COMPETENCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.ID_CURSO" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.FK_COMPETENCIA_SECCION_CURSOS" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.FK_COMPETENCIA_SECCION_DOCENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.FK_DOCENTE_GRADO_SECCION" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.ID_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.ID_ROL" ManuallyRouted="false" />
+        <AssociationConnector Association="EduAppModel.FK_VALORACION_ACTIVIDAD_ACTIVIDAD" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

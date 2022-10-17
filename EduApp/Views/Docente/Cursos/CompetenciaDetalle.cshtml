@@ -23,7 +23,7 @@
                         <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">@Html.ActionLink("Dashboard", "Index", "Docente")</li>
-                                <li class="breadcrumb-item active" aria-current="page">@Html.ActionLink("Curso", "Curso", "Docente")</li>
+                                <li class="breadcrumb-item active" aria-current="page">@Html.ActionLink("Competencias", "CursosCompetencias", "Docente")</li>
                             </ol>
                         </nav>
                     </div>
@@ -38,10 +38,10 @@
                                     @Html.HiddenFor(model => model.ID_COMPETENCIA)
                                     <h4 class="card-title">@Html.DisplayFor(model => model.NOMBRE)</h4>
                                     <p class="card-text">
-                                        @Html.DisplayNameFor(model => model.DETALLE)
+                                        @Model.DETALLE
                                     </p>
                                 </div>
-                                <img class="img-fluid w-100" src="~/images/samples/banana.jpg" alt="Card image cap">
+                                
                             </div>
                         </div>
                     </div>
@@ -49,10 +49,14 @@
                     <div class="col-xl-8 col-md-8 col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Tipo de Competencias</h4>
+                                <h4>Capacidades que evidencia un alumno que logra desarrollar esta competencia</h4>
                             </div>
                             <div class="card-body">
-                                <p>@Html.DisplayNameFor(model => model.NOMBRE)</p>
+                                @foreach (var item in Model.CAPACIDADES)
+                                {
+                                    <p class="text-body">* @item.DESCRIPCION</p>
+                                }
+
                             </div>
                         </div>
                     </div>

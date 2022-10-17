@@ -14,6 +14,12 @@ namespace EduApp.Models.ViewModels
     
     public partial class CUESTIONARIO
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CUESTIONARIO()
+        {
+            this.CALIFICACION = new HashSet<CALIFICACION>();
+        }
+    
         public int ID_CUESTIONARIO { get; set; }
         public string PREGUNTA { get; set; }
         public string RESPUESTA { get; set; }
@@ -21,5 +27,7 @@ namespace EduApp.Models.ViewModels
         public Nullable<int> ID_ACTIVIDAD { get; set; }
     
         public virtual ACTIVIDAD ACTIVIDAD { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CALIFICACION> CALIFICACION { get; set; }
     }
 }

@@ -15,6 +15,8 @@ namespace EduApp.Models
         public List<DETALLE_ACTIVIDAD> detalle { get; set; }
 
         //public CALIFICACION calificacion;
-        //public CUESTIONARIO cuestionario;
+        public List<CUESTIONARIO> cuestionario { get; set; }
+
+        public List<CALIFICACION> calificacion { get; set; }
     }
 }

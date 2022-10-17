@@ -196,6 +196,10 @@ namespace EduApp.Controllers
             {
                 using (EduApp_Entities db = new EduApp_Entities())
                 {
+                    int id = db.USUARIO.Select(x => x.ID_USUARIO).LastOrDefault();
+                    alumno.USUARIO.ID_USUARIO = id;
+                    alumno.ALUMNO_USUARIO = id;
+                    db.USUARIO.Add(alumno.USUARIO);
                     db.ALUMNO.Add(alumno);
                     db.SaveChanges();
                 }
@@ -215,7 +219,6 @@ namespace EduApp.Controllers
 
             AlumnoModel alumnoVM = new AlumnoModel();
             //Detalles del alumno
-            alumnoVM.Id_Alumno = alumno.ID_ALUMNO;
             alumnoVM.Nombres = alumno.NOMBRES;
             alumnoVM.Apellido_Paterno = alumno.APELLIDO_PATERNO;
             alumnoVM.Apellido_Materno = alumno.APELLIDO_MATERNO;
@@ -731,7 +734,25 @@ namespace EduApp.Controllers
         //Agregar
         public ActionResult AddLectura()
         {
-            return View("~/Views/Docente/Actividades/AddLectura.cshtml");
+            EditarLecturaModel model = new EditarLecturaModel();
+
+            using (EduApp_Entities db = new EduApp_Entities())
+            {
+                var competencias = db.COMPETENCIA.Select(x => new SelectListItem
+                {
+                    Value = x.ID_COMPETENCIA.ToString(),
+                    Text = x.NOMBRE
+                }).ToList().Take(3);
+                var cursos = db.CURSOS.Select(x => new SelectListItem
+                {
+                    Value = x.ID_CURSO.ToString(),
+                    Text = x.NOMBRE
+                }).ToList();
+                model.competencias = competencias;
+                model.cursos = cursos;
+            }
+
+            return View("~/Views/Docente/Actividades/AddLectura.cshtml", model);
         }
 
         [HttpPost]
@@ -791,7 +812,7 @@ namespace EduApp.Controllers
         }
 
         //Visualizar
-        public ActionResult ShowLectura(int? id)
+        public ActionResult ShowLectura(int id)
         {
 
             EduApp_Entities db = new EduApp_Entities();
@@ -800,6 +821,11 @@ namespace EduApp.Controllers
             double valoracion = db.VALORACION_ACTIVIDAD.Where(x => x.ID_ACTIVIDAD == id).Select(x => x.VALOR).ToList().Average();
             int cantidad = db.DETALLE_ACTIVIDAD.Where(x => x.ID_ACTIVIDAD == id).Count();
             List<DETALLE_ACTIVIDAD> detalle = db.DETALLE_ACTIVIDAD.Where(x => x.ID_ACTIVIDAD == id).OrderByDescending(x => x.FECHA).ToList();
+
+            List<CUESTIONARIO> cuestionario = db.CUESTIONARIO.Where(x => x.ID_ACTIVIDAD == id).ToList();
+
+
+            List<CALIFICACION>  calificacion= db.CALIFICACION.Where(x => x.DETALLE_ACTIVIDAD.ID_ACTIVIDAD == id).ToList();
             string estado;
             if (actividad.FECHA_LIMITE < DateTime.Now)
             {
@@ -810,13 +836,15 @@ namespace EduApp.Controllers
                 estado = "Activo";
             }
 
-            VerForoModel model = new VerForoModel();
+           ShowLecturaModel model = new ShowLecturaModel();
             model.actividad = actividad;
             model.valoracion = valoracion;
             model.cantidad = cantidad;
             model.detalle = detalle;
             model.estado = estado;
-            return View("~/Views/Docente/Actividades/ShowLectura.cshtml", actividad);
+            model.cuestionario = cuestionario;
+            model.calificacion = calificacion;
+            return View("~/Views/Docente/Actividades/ShowLectura.cshtml", model);
         }
 
 
@@ -862,7 +890,7 @@ namespace EduApp.Controllers
         {
             EduApp_Entities db = new EduApp_Entities();
 
-            List<ACTIVIDAD> list = db.ACTIVIDAD.Where(x => x.ACTIVIDAD_TIPO == 1).ToList();
+            List<ACTIVIDAD> list = db.ACTIVIDAD.Where(x => x.ACTIVIDAD_TIPO == 2).ToList();
             return View("~/Views/Docente/Actividades/Test.cshtml", list);
         }
 
@@ -908,17 +936,17 @@ namespace EduApp.Controllers
             EduApp_Entities db = new EduApp_Entities();
 
             //Lectura
-            ACTIVIDAD lectura = db.ACTIVIDAD.SingleOrDefault(x => x.ID_ACTIVIDAD == id);
+            ACTIVIDAD test = db.ACTIVIDAD.SingleOrDefault(x => x.ID_ACTIVIDAD == id);
 
             //Valoracion
             var valoracion = db.VALORACION_ACTIVIDAD.Where(x => x.ACTIVIDAD.ID_ACTIVIDAD == id).
                 Select(s => s.VALOR);
-            double promedio = valoracion.Average();
+            double promedio = Math.Abs(valoracion.Average());
 
 
             ActividadModel actividad = new ActividadModel()
             {
-                actividad = lectura,
+                actividad = test,
                 valoracion = promedio
             };
 
@@ -927,7 +955,24 @@ namespace EduApp.Controllers
 
         public ActionResult AddTest()
         {
-            return View("~/Views/Docente/Actividades/AddTest.cshtml");
+            EditarLecturaModel model = new EditarLecturaModel();
+
+            using (EduApp_Entities db = new EduApp_Entities())
+            {
+                var competencias = db.COMPETENCIA.Select(x => new SelectListItem
+                {
+                    Value = x.ID_COMPETENCIA.ToString(),
+                    Text = x.NOMBRE
+                }).ToList().Take(3);
+                var cursos = db.CURSOS.Select(x => new SelectListItem
+                {
+                    Value = x.ID_CURSO.ToString(),
+                    Text = x.NOMBRE
+                }).ToList();
+                model.competencias = competencias;
+                model.cursos = cursos;
+            }
+            return View("~/Views/Docente/Actividades/AddTest.cshtml", model);
         }
 
         [HttpPost]

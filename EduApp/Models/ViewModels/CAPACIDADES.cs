@@ -12,16 +12,12 @@ namespace EduApp.Models.ViewModels
     using System;
     using System.Collections.Generic;
     
-    public partial class CALIFICACION
+    public partial class CAPACIDADES
     {
-        public int ID_CALIFICACION { get; set; }
-        public string RESPUESTA { get; set; }
-        public Nullable<int> ID_CUESTIONARIO { get; set; }
-        public Nullable<int> ID_DETALLEACTIVIDAD { get; set; }
-        public Nullable<int> ID_ALUMNO { get; set; }
+        public int ID_CAPACIDAD { get; set; }
+        public int ID_COMPETENCIA { get; set; }
+        public string DESCRIPCION { get; set; }
     
-        public virtual ALUMNO ALUMNO { get; set; }
-        public virtual CUESTIONARIO CUESTIONARIO { get; set; }
-        public virtual DETALLE_ACTIVIDAD DETALLE_ACTIVIDAD { get; set; }
+        public virtual COMPETENCIA COMPETENCIA { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿@model EduApp.Models.ActividadModel
+
 @{
     ViewBag.Title = "VerTest";
     Layout = "~/Views/Shared/teacher_Layout.cshtml";
@@ -33,7 +34,6 @@
 
 
             <section class="section">
-                <a href="@Url.Action("EditTest", "Docente")" class="btn icon icon-left btn-secondary"><i data-feather="edit"></i> Editar</a>
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="card">
@@ -41,27 +41,27 @@
                                 <div class="d-flex w-100 justify-content-between">
                                     <!---Titulo-->
                                     <div class="form-group row align-items-center">
-                                        <h5>Titulo: Test</h5>
+                                        <h5>Titulo: @Model.actividad.TITULO</h5>
                                     </div>
                                     <span>
-                                        <span class="badge bg-warning">Satisfacción</span>
+                                        <span class="badge bg-warning">Satisfacción: @Model.valoracion</span>
                                     </span>
                                 </div>
 
                                 <div class="d-flex w-100 justify-content-between">
                                     <!---Titulo-->
                                     <div class="form-group row align-items-center">
-                                        <label>Curso: Ciencia</label>
+                                        <label>Curso: @Model.actividad.CURSOS.NOMBRE</label>
                                     </div>
                                     <span>
-                                        <label>Competencia: Competencia 1</label>
+                                        <label>Competencia: @Model.actividad.COMPETENCIA.NOMBRE</label>
                                     </span>
                                 </div>
 
                                 <div class="d-flex w-100 justify-content-between">
                                     <!---Titulo-->
                                     <div class="form-group row align-items-center">
-                                        <labeñ>Fecha: 10/20/2022</labeñ>
+                                        <labeñ>Fecha Límite: @Model.actividad.FECHA_LIMITE</labeñ>
                                     </div>
                                     <span>
                                         <labeñ>Tipo: Test</labeñ>
@@ -80,40 +80,42 @@
                                             <!--Espeicficaciones-->
                                             <div>
                                                 <span class="badge bg-primary">
-                                                    Cantidad Preguntas <span class="badge bg-transparent">12</span>
+                                                    Cantidad Preguntas <span class="badge bg-transparent">3</span>
                                                 </span>
                                             </div>
 
                                             <br />
                                             <!---Preguntas-->
-
                                             <ul class="list-group list-group-flush">
-                                                <!---ITEM CON ALTERNATIVAS--->
+                                                @foreach (var item in Model.actividad.CUESTIONARIO)
+                                                {
+
                                                 <li class="list-group-item">
+                                                    <br />
                                                     <div class="d-flex w-100 justify-content-between">
-                                                        <p>1) ¿Cuantos tipos de mapas existen?</p>
-                                                        <b>Tipo: Opción Múltiple</b>
+                                                        <p>@item.PREGUNTA</p>
+                                                        @if (item.OPCIONES == null)
+                                                        {<b>Tipo: Pregunta Única</b>}
+                                                        @if (item.RESPUESTA == null)
+                                                        {<b>Tipo: Pregunta Libre</b>}
+                                                        @if (item.RESPUESTA != null && item.OPCIONES != null)
+                                                        {<b>Tipo: Pregunta Libre</b>}
                                                     </div>
-
+                                                    <br />
                                                     <div class="d-flex w-100 justify-content-between">
 
-                                                        <i>Respuesta: 3</i>
-                                                        <i>Alternativas: 1,2,4</i>
+                                                        <i>Respuesta: @item.RESPUESTA</i>
+                                                    </div>
+                                                    <div class="d-flex w-100 justify-content-between">
+
+                                                        <i>Opciones: @item.OPCIONES</i>
                                                     </div>
                                                 </li>
 
-                                                <!--ITEM SIN ALTERNATIVAS-->
-                                                <li class="list-group-item">
-                                                    <p>2) ¿Cuantos tipos de mapas existen?</p>
-                                                    <i>Respuesta: 3</i>
-                                                </li>
+                                                }
 
-                                                <li class="list-group-item">
-                                                    <p>3) ¿Cuantos tipos de mapas existen?</p>
-                                                    <i>Respuesta: 3</i>
-                                                </li>
                                             </ul>
-                                        </div>
+                                            </div>
 
                                     </div>
                                 </div>

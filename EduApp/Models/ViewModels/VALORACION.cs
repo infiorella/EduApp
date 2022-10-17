@@ -14,8 +14,17 @@ namespace EduApp.Models.ViewModels
     
     public partial class VALORACION
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public VALORACION()
+        {
+            this.VALORACION_ACTIVIDAD = new HashSet<VALORACION_ACTIVIDAD>();
+        }
+    
         public int ID_VALORACION { get; set; }
         public string DESCRIPCION { get; set; }
         public int VALOR { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VALORACION_ACTIVIDAD> VALORACION_ACTIVIDAD { get; set; }
     }
 }

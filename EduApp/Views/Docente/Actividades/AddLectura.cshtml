@@ -1,4 +1,5 @@
-﻿
+﻿@model EduApp.Models.EditarLecturaModel
+
 @{
     ViewBag.Title = "AddLectura";
     Layout = "~/Views/Shared/teacher_Layout.cshtml";
@@ -35,30 +36,54 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <h5 class="card-title">Titulo</h5>
-                                    <input tyoe="text" class="form-control"
-                                           placeholder="First Name" name="fname-column" />
+                                    @Html.LabelFor(model => model.actividad.TITULO, "Título", htmlAttributes: new { @class = "control-label col-md-6" })
+
+                                    @Html.EditorFor(model => model.actividad.TITULO, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.actividad.TITULO, "", new { @class = "text-danger" })
                                     <br />
-                                    <div>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+
+
+                                    @Html.LabelFor(model => model.actividad.FECHA_LIMITE, "Fecha Límite", htmlAttributes: new { @class = "control-label col-md-6" })
+                                    @Html.EditorFor(model => model.actividad.FECHA_LIMITE, new { htmlAttributes = new { type = "datetime-local", @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.actividad.FECHA_LIMITE, "", new { @class = "text-danger" })
+                                    <br />
+
+                                    @Html.LabelFor(model => model.actividad.ID_CURSO, "Curso", htmlAttributes: new { @class = "control-label col-md-6" })
+                                    @Html.DropDownListFor(x => Model.actividad.ID_CURSO, (Model.cursos), htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.actividad.ID_CURSO, "", new { @class = "text-danger" })
+                                    <br />
+
+                                    @Html.LabelFor(model => model.actividad.ID_COMPETENCIA, "Competencia", htmlAttributes: new { @class = "control-label col-md-6" })
+                                    @Html.DropDownListFor(x => Model.actividad.ID_COMPETENCIA, (Model.competencias), htmlAttributes: new { @id = "competencia", @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.actividad.ID_COMPETENCIA, "", new { @class = "text-danger" })
+
+                                    <br />
+                                    <div class="card-footer">
+                                        <h4 class="text-body">Detalle actividad</h4>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+
+                                        <br />
+                                        @Html.LabelFor(model => model.actividad.ARCHIVO, "Archivo", htmlAttributes: new { @class = "control-label col-md-6" })
+                                        @Html.TextBoxFor(x => Model.actividad.ARCHIVO, htmlAttributes: new { type = "file", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.actividad.ARCHIVO, "", new { @class = "text-danger" })
                                     </div>
 
                                     <br />
                                     <!--Espeicficaciones-->
                                     <div class="d-flex w-100 justify-content-between">
                                         <span class="badge bg-primary">
-                                            Cantidad Preguntas <span class="badge bg-transparent">12</span>
+                                            Preguntas <span class="badge bg-transparent"></span>
                                         </span>
-                                        <a href="#" class="btn btn-info">Agregar</a>
+                                        <button id="nuevapregunta" class="btn btn-info">Agregar Pregunta</button>
                                     </div>
 
                                     <br />
                                     <!---Preguntas-->
 
-                                    <ul class="list-group list-group-flush">
+                                    <ul id="container" class="list-group list-group-flush">
                                         <!---ITEM CON ALTERNATIVAS--->
-                                        <li class="list-group-item">
-                                            <h5>Pregunta 1</h5>
+                                        <li id="mainsection" class="list-group-item">
+                                            <h5>Pregunta</h5>
                                             <div class="d-flex w-100 justify-content-between">
                                                 <!--Pregunta-->
                                                 <div class="col-md-12">
@@ -67,7 +92,7 @@
                                                             <label class="col-form-label">Pregunta</label>
                                                         </div>
                                                         <div class="col-lg-10 col-9">
-                                                            <input type="text" id="first-name" class="form-control" name="fname" placeholder="Pregunta" value="1) ¿Cuantas regiones existe en el Perú?" "?>
+                                                            <input type="text" id="first-name" class="form-control" name="fname" placeholder="Pregunta" value=" ">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -80,14 +105,10 @@
                                                             <label class="col-form-label">Tipo </label>
                                                         </div>
                                                         <div class="col-lg-8 col-7">
-                                                            <select class="choices form-select">
-                                                                <option value="square">Opción Múltiple</option>
-                                                                <option value="rectangle">Rectangle</option>
-                                                                <option value="rombo">Rombo</option>
-                                                                <option value="romboid">Romboid</option>
-                                                                <option value="trapeze">Trapeze</option>
-                                                                <option value="traible">Triangle</option>
-                                                                <option value="polygon">Polygon</option>
+                                                            <select id="tipoopcion" class="choices form-select">
+                                                                <option value="1">Opción Múltiple</option>
+                                                                <option value="2">Pregunta Abierta</option>
+                                                                <option value="3">Pregunta única</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -102,7 +123,7 @@
                                                             <label class="col-form-label">Respuesta </label>
                                                         </div>
                                                         <div class="col-lg-7 col-6">
-                                                            <input type="text" id="first-name" class="form-control" name="fname" placeholder="Pregunta" value="1" ?>
+                                                            <input type="text" name="respuesta" id="respuesta" class="form-control" placeholder="Pregunta" value="1">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -113,74 +134,17 @@
                                                             <label class="col-form-label">Alternativas </label>
                                                         </div>
                                                         <div class="col-lg-8 col-7">
-                                                            <input type="text" id="first-name" class="form-control" name="fname" placeholder="Pregunta" value="1,5,4,6" ?>
+                                                            <input type="text" name="alternativas" id="alternativas" class="form-control" placeholder="Pregunta" value="1,5,4,6">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <br />
-                                        </li>
-
-                                        <br />
-
-                                        <!--Iem sin alternativas-->
-                                        <li class="list-group-item">
-                                            <h5>Pregunta 2</h5>
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <!--Pregunta-->
-                                                <div class="col-md-12">
-                                                    <div class="form-group row align-items-center">
-                                                        <div class="col-lg-2 col-3">
-                                                            <label class="col-form-label">Pregunta</label>
-                                                        </div>
-                                                        <div class="col-lg-10 col-9">
-                                                            <input type="text" id="first-name" class="form-control" name="fname" placeholder="Pregunta" value="1) ¿Cuantas regiones existe en el Perú?" "?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <!---Tipo-->
-                                                <div class="col-md-12">
-                                                    <div class="form-group row align-items-center">
-                                                        <div class="col-lg-2 col-3">
-                                                            <label class="col-form-label">Tipo </label>
-                                                        </div>
-                                                        <div class="col-lg-8 col-7">
-                                                            <select class="choices form-select">
-                                                                <option value="square">Respuesta Especifica</option>
-                                                                <option value="rectangle">Rectangle</option>
-                                                                <option value="rombo">Rombo</option>
-                                                                <option value="romboid">Romboid</option>
-                                                                <option value="trapeze">Trapeze</option>
-                                                                <option value="traible">Triangle</option>
-                                                                <option value="polygon">Polygon</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <!---Tipo-->
-                                                <div class="col-md-12">
-                                                    <div class="form-group row align-items-center">
-                                                        <div class="col-lg-2 col-3">
-                                                            <label class="col-form-label">Respuesta </label>
-                                                        </div>
-                                                        <div class="col-lg-8 col-9">
-                                                            <input type="text" id="first-name" class="form-control" name="fname" placeholder="Pregunta" value="1" ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-
-
                                         </li>
                                     </ul>
+
+                                    <div class="card-footer">
+                                        <a href="#" class="btn icon icon-left btn-secondary"><i data-feather="edit"></i> Crear Lectura</a>
+                                    </div>
                                 </div>
                             </div>
 
@@ -193,3 +157,28 @@
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.getElementById("nuevapregunta").onclick = function () {
+            var container = document.getElementById("container");
+            var section = document.getElementById("mainsection");
+            container.appendChild(section.cloneNode(true));
+        }
+
+        $("#tipoopcion").change(function () {
+            if ($(this).val() == "2") {
+                $("#alternativas").prop("disabled", true);
+                $("#respuesta").prop("disabled", true);
+            } else if ($(this).val() == "3") {
+                $("#respuesta").prop("disabled", false);
+                $("#alternativas").prop("disabled", true);
+            } else if ($(this).val() == "1") {
+                $("#alternativas").prop("disabled", false);
+                $("#respuesta").prop("disabled", false);
+            }
+        }).trigger("change");
+    </script>
+}

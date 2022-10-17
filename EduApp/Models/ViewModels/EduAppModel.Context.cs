@@ -13,10 +13,10 @@ namespace EduApp.Models.ViewModels
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EduApp_BDEntities : DbContext
+    public partial class EduApp_Entities : DbContext
     {
-        public EduApp_BDEntities()
-            : base("name=EduApp_BDEntities")
+        public EduApp_Entities()
+            : base("name=EduApp_Entities")
         {
         }
     
@@ -28,7 +28,9 @@ namespace EduApp.Models.ViewModels
         public virtual DbSet<ACTIVIDAD> ACTIVIDAD { get; set; }
         public virtual DbSet<ALUMNO> ALUMNO { get; set; }
         public virtual DbSet<CALIFICACION> CALIFICACION { get; set; }
+        public virtual DbSet<CAPACIDADES> CAPACIDADES { get; set; }
         public virtual DbSet<COMPETENCIA> COMPETENCIA { get; set; }
+        public virtual DbSet<COMPETENCIA_SECCION> COMPETENCIA_SECCION { get; set; }
         public virtual DbSet<CUESTIONARIO> CUESTIONARIO { get; set; }
         public virtual DbSet<CURSOS> CURSOS { get; set; }
         public virtual DbSet<DETALLE_ACTIVIDAD> DETALLE_ACTIVIDAD { get; set; }
@@ -36,8 +38,8 @@ namespace EduApp.Models.ViewModels
         public virtual DbSet<GRADO_SECCION> GRADO_SECCION { get; set; }
         public virtual DbSet<ROL> ROL { get; set; }
         public virtual DbSet<TIPO_ACTIVIDAD> TIPO_ACTIVIDAD { get; set; }
-        public virtual DbSet<TIPO_COMPETENCIA> TIPO_COMPETENCIA { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<VALORACION> VALORACION { get; set; }
+        public virtual DbSet<VALORACION_ACTIVIDAD> VALORACION_ACTIVIDAD { get; set; }
     }
 }

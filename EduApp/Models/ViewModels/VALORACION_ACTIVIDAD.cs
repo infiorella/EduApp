@@ -20,5 +20,6 @@ namespace EduApp.Models.ViewModels
         public int VALOR { get; set; }
     
         public virtual ACTIVIDAD ACTIVIDAD { get; set; }
+        public virtual VALORACION VALORACION { get; set; }
     }
 }

@@ -14,14 +14,23 @@ namespace EduApp.Models.ViewModels
     
     public partial class DETALLE_ACTIVIDAD
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DETALLE_ACTIVIDAD()
+        {
+            this.CALIFICACION = new HashSet<CALIFICACION>();
+        }
+    
         public int ID_DETALLE { get; set; }
         public int ID_ALUMNO { get; set; }
         public int ID_ACTIVIDAD { get; set; }
         public string NOTA { get; set; }
         public System.DateTime FECHA { get; set; }
         public string COMENTARIO { get; set; }
+        public string RESPUESTA { get; set; }
     
         public virtual ACTIVIDAD ACTIVIDAD { get; set; }
         public virtual ALUMNO ALUMNO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CALIFICACION> CALIFICACION { get; set; }
     }
 }

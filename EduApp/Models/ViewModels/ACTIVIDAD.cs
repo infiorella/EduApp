@@ -11,14 +11,12 @@ namespace EduApp.Models.ViewModels
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class ACTIVIDAD
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ACTIVIDAD()
         {
-            this.CALIFICACION = new HashSet<CALIFICACION>();
             this.CUESTIONARIO = new HashSet<CUESTIONARIO>();
             this.VALORACION_ACTIVIDAD = new HashSet<VALORACION_ACTIVIDAD>();
             this.DETALLE_ACTIVIDAD = new HashSet<DETALLE_ACTIVIDAD>();
@@ -31,7 +29,6 @@ namespace EduApp.Models.ViewModels
         public string ARCHIVO { get; set; }
         public System.DateTime FECHA_CREACION { get; set; }
         public Nullable<System.DateTime> FECHA_ACTUALIZACION { get; set; }
-
         public Nullable<System.DateTime> FECHA_LIMITE { get; set; }
         public int ESTADO { get; set; }
         public int ACTIVIDAD_TIPO { get; set; }
@@ -39,8 +36,6 @@ namespace EduApp.Models.ViewModels
         public int ID_CURSO { get; set; }
         public Nullable<int> ID_DOCENTE { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CALIFICACION> CALIFICACION { get; set; }
         public virtual TIPO_ACTIVIDAD TIPO_ACTIVIDAD { get; set; }
         public virtual CURSOS CURSOS { get; set; }
         public virtual DOCENTE DOCENTE { get; set; }

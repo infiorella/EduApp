@@ -18,6 +18,7 @@ namespace EduApp.Models.ViewModels
         public COMPETENCIA()
         {
             this.ACTIVIDAD = new HashSet<ACTIVIDAD>();
+            this.CAPACIDADES = new HashSet<CAPACIDADES>();
             this.COMPETENCIA_SECCION = new HashSet<COMPETENCIA_SECCION>();
         }
     
@@ -29,6 +30,8 @@ namespace EduApp.Models.ViewModels
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ACTIVIDAD> ACTIVIDAD { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CAPACIDADES> CAPACIDADES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPETENCIA_SECCION> COMPETENCIA_SECCION { get; set; }
         public virtual CURSOS CURSOS { get; set; }

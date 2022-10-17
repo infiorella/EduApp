@@ -17,6 +17,7 @@ namespace EduApp.Models.ViewModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ALUMNO()
         {
+            this.CALIFICACION = new HashSet<CALIFICACION>();
             this.DETALLE_ACTIVIDAD = new HashSet<DETALLE_ACTIVIDAD>();
         }
     
@@ -32,6 +33,8 @@ namespace EduApp.Models.ViewModels
         public int ALUMNO_USUARIO { get; set; }
         public int ID_GRADO_SECCION { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CALIFICACION> CALIFICACION { get; set; }
         public virtual USUARIO USUARIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLE_ACTIVIDAD> DETALLE_ACTIVIDAD { get; set; }

@@ -41,11 +41,12 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-header">
-                                    <h5 class="card-title">@Model.actividad.TITULO</h5>
+                                    <h4 class="card-title">@Model.actividad.TITULO</h4>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">Fecha de creación: @Model.actividad.FECHA_CREACION</h5>
-                                    <h5 class="card-title">Fecha Límite: @Model.actividad.FECHA_LIMITE</h5>
+                                    <h5 class="card-text">Fecha Límite: @Model.actividad.FECHA_LIMITE</h5>
+                                    <p class="card-text">Curso: @Model.actividad.COMPETENCIA.CURSOS.NOMBRE</p>
+                                    <p class="card-text">Curso: @Model.actividad.COMPETENCIA.NOMBRE</p>
                                     <span>
                                         <span class="badge bg-warning">Satisfacción: @Model.valoracion</span>
                                     </span>
@@ -56,8 +57,12 @@
                                         <span class="badge bg-info">Cantidad respuestas: @Model.cantidad</span>
                                     </span>
                                 </div>
-                                <div>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10">@Model.actividad.DESCRIPCION</textarea>
+
+                                <div class="card-body">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" readonly rows="5">@Model.actividad.DESCRIPCION</textarea>
+                                    <br />
+                                    <embed src="~/@Model.actividad.ARCHIVO" width="450" height="500"
+                                           type="application/pdf">
                                 </div>
                             </div>
                         </div>
@@ -72,46 +77,162 @@
                                     <div class="list-group-item">
 
                                         <div class="card-body">
-                                            <h5>Respuestas</h5>
+                                            <h5>Preguntas</h5>
                                             <!---Preguntas-->
 
                                             <ul class="list-group list-group-flush">
-                                                <!---ITEM CON ALTERNATIVAS--->
-                                                <li class="list-group-item">
-                                                    <div class="d-flex w-100 justify-content-between">
-                                                        <p>Alumno: Juan Quispe</p>
-                                                        <b>NOTA: AD</b>
-                                                    </div>
-
-                                                    <div class="d-flex w-100 justify-content-between">
-                                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                                            Ver respuestas
-                                                        </button>
-                                                        <button id="Comentario"
-                                                                class="btn btn-outline-secondary">
-                                                            Comentario
-                                                        </button>
-                                                    </div>
-                                                    </p>
-                                                    <div class="collapse" id="collapseExample">
-                                                        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                                                    </div>
-                                                </li>
-
-                                                <!--ITEM SIN ALTERNATIVAS-->
-                                                <li class="list-group-item">
-                                                    <p>2) ¿Cuantos tipos de mapas existen?</p>
-                                                    <i>Respuesta: 3</i>
-                                                </li>
-
-                                                <li class="list-group-item">
-                                                    <p>3) ¿Cuantos tipos de mapas existen?</p>
-                                                    <i>Respuesta: 3</i>
-                                                </li>
+                                                @foreach (var item in Model.cuestionario)
+                                                {
+                                                    <!--ITEM SIN ALTERNATIVAS-->
+                                                    <li class="list-group-item">
+                                                        <b>@item.PREGUNTA</b>
+                                                        <p>@item.OPCIONES</p>
+                                                        <i>Respuesta: @item.RESPUESTA </i>
+                                                    </li>
+                                                }
                                             </ul>
                                         </div>
-
                                     </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Lectura</h5>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-lg">
+                                        <thead>
+                                            <tr>
+                                                <th>Alumno</th>
+                                                <th>Comentario</th>
+                                                <th>Estado</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach (var item in Model.detalle)
+                                            {
+                                                string nuevo = item.ID_ALUMNO.ToString();
+
+
+                                                <tr>
+                                                    <td class="col-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar avatar-md">
+                                                                @if (item.ALUMNO.SEXO == "F")
+                                                                {
+                                                                    <img src="~/Content/images/Alumnos/m1.png">
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="~/Content/images/Alumnos/h1.png">
+                                                                }
+
+                                                            </div>
+                                                            <p class="font-bold ms-3 mb-0">@item.ALUMNO.NOMBRES</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="col-auto">
+                                                        <p class=" mb-0">@item.COMENTARIO</p>
+                                                    </td>
+                                                    <td class="col-auto">
+                                                        <p class=" mb-0">Calificado</p>
+                                                    </td>
+                                                    <td class="col-auto">
+                                                        <div class="form-group">
+                                                            <!---ITEM CON ALTERNATIVAS--->
+                                                            <div class="d-flex w-100 justify-content-between">
+                                                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                                    Ver respuestas
+                                                                </button>
+                                                            </div>
+                                                            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                                                                    data-bs-target="#inlineForm">
+                                                                Calificar
+                                                            </button>
+
+                                                            <!--form Modal -->
+                                                            <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog"
+                                                                 aria-labelledby="myModalLabel33" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                                                                     role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h4 class="modal-title" id="myModalLabel33">Calificación</h4>
+                                                                            <button type="button" class="close" data-bs-dismiss="modal"
+                                                                                    aria-label="Close">
+                                                                                <i data-feather="x"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                        <form action="#">
+                                                                            <div class="modal-body">
+                                                                                <label>Nota: </label>
+                                                                                <div class="form-group">
+                                                                                    <select class="choices form-select">
+                                                                                        <option value="AD">AD</option>
+                                                                                        <option value="A">A</option>
+                                                                                        <option value="B">B</option>
+                                                                                        <option value="C">C</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <label>Comentario: </label>
+                                                                                <div class="form-group">
+                                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-light-secondary"
+                                                                                        data-bs-dismiss="modal">
+                                                                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                                                                    <span class="d-none d-sm-block">Cerrar</span>
+                                                                                </button>
+                                                                                <button type="button" class="btn btn-primary ml-1"
+                                                                                        data-bs-dismiss="modal">
+                                                                                    <i class="bx bx-check d-block d-sm-none"></i>
+                                                                                    <span class="d-none d-sm-block">Calificar</span>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4">
+
+                                                        <div class="collapse" id="collapseExample">
+                                                            @foreach (var calificacion in Model.calificacion)
+                                                            {
+                                                                if (calificacion.ID_ALUMNO == item.ID_ALUMNO)
+                                                                {
+                                                                    <p>Pregunta: @calificacion.CUESTIONARIO.PREGUNTA</p>
+                                                                    <p>Respuesta: @calificacion.RESPUESTA</p>
+                                                                    <p>Respuesta Correcta: @calificacion.RESPUESTA</p>
+                                                                }
+
+                                                            }
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+
+
+
+
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 
@@ -126,7 +247,9 @@
 
 @section Scripts
 {
-    <script src="~/extensions/sweetalert2/sweetalert2.min.js"></script>>
-    <script src="~/js/pages/sweetalert2.js"></script>>
+    <script src="~/Content/js/bootstrap.js"></script>
+    <script src="~/Content/js/app.js"></script>
+    <script src="~/Content/extensions/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/Contentjs/pages/sweetalert2.js"></script>
 
 }
