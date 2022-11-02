@@ -1,4 +1,6 @@
-﻿
+﻿@model EduApp.Models.ViewModels.AlumnoIndexModel
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/students_Layout.cshtml";
@@ -12,7 +14,7 @@
     </header>
 
     <div class="page-heading">
-        <h3>Hola _____</h3>
+        <h3>Hola @Html.DisplayFor(model => model.alumno.NOMBRES) @Html.DisplayFor(model => model.alumno.APELLIDO_PATERNO)</h3>
     </div>
     <div class="page-content">
         <section class="row">
@@ -29,7 +31,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Actividades Realizadas</h6>
-                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <h6 class="font-extrabold mb-0">@Model.actividadesRealizadas</h6>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +48,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Actividades Pendientes</h6>
-                                        <h6 class="font-extrabold mb-0">18</h6>
+                                        <h6 class="font-extrabold mb-0">@Model.actividadesPendientes</h6>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +65,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Competencias Alcanzadas</h6>
-                                        <h6 class="font-extrabold mb-0">80.000</h6>
+                                        <h6 class="font-extrabold mb-0">@Model.competenciasAlcanzadas</h6>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +82,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Competencias No Alcanzadas</h6>
-                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <h6 class="font-extrabold mb-0">@Model.competenciasNoAlcanzadas</h6>
                                     </div>
                                 </div>
                             </div>
@@ -94,11 +96,18 @@
                     <div class="card-body py-4 px-4">
                         <div class="d-flex align-items-center">
                             <div class="avatar avatar-xl">
-                                <img src="~/images/faces/1.jpg" alt="Face 1">
+                                @if (@Model.alumno.SEXO == "F")
+                                {
+                                    <img src="~/Content/images/Alumnos/m2.png">
+                                }
+                                else
+                                {
+                                    <img src="~/Content/images/Alumnos/h2.png">
+                                }
                             </div>
                             <div class="ms-3 name">
-                                <h5 class="font-bold">Martinez Calderón</h5>
-                                <h6 class="text-muted mb-0">Ana María</h6>
+                                <h5 class="font-bold">@Model.alumno.APELLIDO_PATERNO @Model.alumno.APELLIDO_MATERNO</h5>
+                                <h6 class="text-muted mb-0">@Model.alumno.NOMBRES</h6>
                             </div>
                         </div>
                     </div>
@@ -118,13 +127,11 @@
                             <div class="col-lg-5">
                                 <div class="form-group">
                                     <select class="choices form-select">
-                                        <option value="square">Cursos</option>
-                                        <option value="rectangle">Rectangle</option>
-                                        <option value="rombo">Rombo</option>
-                                        <option value="romboid">Romboid</option>
-                                        <option value="trapeze">Trapeze</option>
-                                        <option value="traible">Triangle</option>
-                                        <option value="polygon">Polygon</option>
+                                        <option value="">Cursos</option>
+                                        @foreach (var curso in Model.cursos)
+                                        {
+                                            <option value="@curso.ID_CURSO">@curso.NOMBRE</option>
+                                        }
                                     </select>
                                 </div>
                             </div>
@@ -142,18 +149,15 @@
                         <h4>Últimos Comentarios</h4>
                     </div>
                     <div class="card-content pb-4">
-                        <div class="recent-message d-flex px-4 py-3">
-                            <div class="name ms-4">
-                                <h5 class="mb-1">Lectura</h5>
-                                <h6 class="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris </h6>
+                        @foreach (var item in Model.actividad)
+                        {
+                            <div class="recent-message d-flex px-4 py-3">
+                                <div class="name ms-4">
+                                    <h5 class="mb-1">@item.ACTIVIDAD.TIPO_ACTIVIDAD.NOMBRE</h5>
+                                    <h6 class="text-muted mb-0">@item.COMENTARIO</h6>
+                                </div>
                             </div>
-                        </div>
-                        <div class="recent-message d-flex px-4 py-3">
-                            <div class="name ms-4">
-                                <h5 class="mb-1">Lectura</h5>
-                                <h6 class="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris </h6>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -199,4 +203,75 @@
 @section Scripts
 {
     @Scripts.Render("~/Docente/Dashoard/js");
+
+    <script>
+        //Avance Competencias
+        var optionsAvanceCompetencias = {
+            annotations: {
+                position: 'back'
+            },
+            dataLabels: {
+                enabled: false
+            },
+            chart: {
+                type: 'bar',
+                height: 300
+            },
+            fill: {
+                opacity: 1
+            },
+            plotOptions: {
+            },
+            series: [{
+                name: 'Alcanzados',
+                data: [0, 0, 0, 0, 0, 0]
+            }],
+            colors: '#435ebe',
+            xaxis: {
+                categories: ["Competencia 1", "Competencia 2", "Competencia 3", "Competencia 4", "Competencia 5", "Competencia 6"],
+            },
+        }
+
+        //AVANCE DE COMPETENCIAS
+        var chartAvanceCompetencias = new ApexCharts(document.querySelector("#chart-avance-competencias"), optionsAvanceCompetencias);
+        chartAvanceCompetencias.render();
+
+
+        const curso = document.getElementById('avanceCompetencias');
+        curso.addEventListener('change', getDatosCompetencias);
+
+
+        function getDatosCompetencias() {
+            $.post("/Docente/GetChartCompetenciasIndex",
+                { IdCurso: curso.value },
+                function (response) {
+                    chartAvanceCompetencias.updateOptions({
+                        annotations: {
+                            position: 'back'
+                        },
+                        dataLabels: {
+                            enabled: false
+                        },
+                        chart: {
+                            type: 'bar',
+                            height: 300
+                        },
+                        fill: {
+                            opacity: 1
+                        },
+                        plotOptions: {
+                        },
+                        series: [{
+                            name: 'Alcanzados',
+                            data: response.data
+                        }],
+                        colors: '#435ebe',
+                        xaxis: {
+                            categories: response.labels,
+                        },
+                    })
+                }
+            );
+        }
+    </script>
 }

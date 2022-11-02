@@ -47,7 +47,12 @@
                         </li>
 
                         <li class="sidebar-item">
-                            @Html.ActionLink("Cursos", "Cursos", "Estudiante")
+                            <span class='sidebar-link'>
+                                <i class="bi bi-journal"></i>
+                                <span>
+                                    @Html.ActionLink("Cursos", "Cursos", "Estudiante")
+                                </span>
+                            </span>                                
                         </li>
 
                         <li class="sidebar-item  has-sub">
@@ -69,7 +74,13 @@
                         </li>
 
                         <li class="sidebar-item">
-                            @Html.ActionLink("Perfil", "Perfil", "Estudiante")
+                            <span class='sidebar-link'>
+                                <i class="bi bi-emoji-smile"></i>
+                                <span>
+
+                                    @Html.ActionLink("Perfil", "Perfil", "Estudiante")
+                                </span>
+                            </span>
                         </li>
                     </ul>
                 </div>

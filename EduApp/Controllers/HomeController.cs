@@ -50,12 +50,12 @@ namespace EduApp.Controllers
                     if(user.ROL.ID_ROL == 1)
                     {
                         var IdDocente = db.DOCENTE.Where(e => e.ID_USUARIO == user.ID_USUARIO).Select(u=> u.ID_DOCENTE).FirstOrDefault();
-                        FormsAuthentication.SetAuthCookie(user.USUARIO1, true);
+                        FormsAuthentication.SetAuthCookie(IdDocente.ToString(), true);
                         TempData["IdDocente"]= IdDocente;
                         return RedirectToAction("Index", "Docente");
                     } else if(user.ROL.ID_ROL == 2)                    {
                         var IdAlumno = db.ALUMNO.Where(e => e.ALUMNO_USUARIO == user.ID_USUARIO).Select(u => u.ID_ALUMNO).FirstOrDefault();
-                        FormsAuthentication.SetAuthCookie(user.USUARIO1, true);
+                        FormsAuthentication.SetAuthCookie(IdAlumno.ToString(), true);
                         TempData["IdAlumno"] = IdAlumno;
                         return RedirectToAction("Index", "Estudiante");
                     }

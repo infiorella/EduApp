@@ -1,4 +1,5 @@
-﻿
+﻿@model EduApp.Models.ViewModels.AlumnoDetalleModel
+
 @{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/students_Layout.cshtml";
@@ -22,8 +23,16 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Mi Perfil</h3>
-                    </div>                    
+                        <h3>Detalle Alumno</h3>
+                    </div>
+                    <div class="col-12 col-md-6 order-md-2 order-first">
+                        <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">@Html.ActionLink("Dashboard", "Index", "Docente")</li>
+                                <li class="breadcrumb-item active" aria-current="page">@Html.ActionLink("Alumnos", "Alumnos", "Docente")</li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
             </div>
             <section id="content-types">
@@ -32,14 +41,14 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <h5 class="card-title">Sara Smith</h5>
+                                    <h5 class="card-title">@Model.Alumno.NOMBRES  @Model.Alumno.APELLIDO_PATERNO @Model.Alumno.APELLIDO_MATERNO</h5>
                                 </div>
                             </div>
                             <ul class="list-group list-group-flush" style="padding-left:10px">
-                                <li class="list-group-item">Edad: 10</li>
-                                <li class="list-group-item">Correo: sara@gmail.com</li>
-                                <li class="list-group-item">Telefono: 2983939384</li>
-                                <li class="list-group-item">Sexo: Femenino</li>
+                                <li class="list-group-item">Fecha Nacimiento: @Model.Alumno.FECHA_NACIMIENTO</li>
+                                <li class="list-group-item">Telefono: @Model.Alumno.TELEFONO</li>
+                                <li class="list-group-item">Dirección: @Model.Alumno.DIRECCION</li>
+                                <li class="list-group-item">Sexo: @Model.Alumno.SEXO</li>
                             </ul>
                             <br />
                         </div>
@@ -55,7 +64,7 @@
                                         </div>
                                         <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-3" style="padding-left:5%">
                                             <h6 class="text-muted font-semibold">Actividades Realizadas</h6>
-                                            <h6 class="font-extrabold mb-0">11</h6>
+                                            <h6 class="font-extrabold mb-0">@Model.cantidadActividades</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +82,7 @@
                                         </div>
                                         <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-3" style="padding-left:3%">
                                             <h6 class="text-muted font-semibold">Cursos sin logro alcanzado</h6>
-                                            <h6 class="font-extrabold mb-0">1</h6>
+                                            <h6 class="font-extrabold mb-0">@Model.cursosSinLogroAlcanzado</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -93,14 +102,12 @@
 
                                     <div class="col-lg-4 mb-1">
                                         <div class="form-group">
-                                            <select class="choices form-select">
-                                                <option value="square">Cursos</option>
-                                                <option value="rectangle">Rectangle</option>
-                                                <option value="rombo">Rombo</option>
-                                                <option value="romboid">Romboid</option>
-                                                <option value="trapeze">Trapeze</option>
-                                                <option value="traible">Triangle</option>
-                                                <option value="polygon">Polygon</option>
+                                            <select id="cursos" class="choices form-select">
+                                                <option value="">Cursos</option>
+                                                @foreach (var curso in Model.cursos)
+                                                {
+                                                    <option value="@curso.ID_CURSO">@curso.NOMBRE</option>
+                                                }
                                             </select>
                                         </div>
                                     </div>
@@ -119,49 +126,23 @@
                                 <h4>Últimas Actividades Calificadas</h4>
                             </div>
 
-                            <div class="card-content pb-4">
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <i class="bi bi-card-heading"></i>
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Hank Schrader</h5>
-                                        <h6 class="text-muted mb-0">Foro 1: Excelente comentario</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <i class="bi bi-book-fill"></i>
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Dean Winchester</h5>
-                                        <h6 class="text-muted mb-0">Lectura 1: Deberia mejorar la ortografía</h6>
+                            @foreach (var e in Model.Actividad)
+                            {
+                                <div class="card-content pb-4">
+                                    <div class="recent-message d-flex px-4 py-3">
+                                        <div class="avatar avatar-lg">
+                                            <h5 class="mb-1">@e.ACTIVIDAD.TIPO_ACTIVIDAD.NOMBRE</h5>
+                                        </div>
+                                        <div class="name ms-4">
+                                            <h5 class="mb-1">@e.ACTIVIDAD.TITULO</h5>
+                                            <h6 class="text-muted mb-0">@e.COMENTARIO</h6>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <i class="bi bi-clipboard-check-fill"></i>
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">John Dodol</h5>
-                                        <h6 class="text-muted mb-0">Test 1: Repasar tema A</h6>
-                                    </div>
-                                </div>
-
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <i class="bi bi-clipboard-check-fill"></i>
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">John Dodol</h5>
-                                        <h6 class="text-muted mb-0">Test 1: Repasar tema A</h6>
-                                    </div>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
 
-                    <!----ACTIVIDADES-->
                     <div class="col-md-12">
                         <!-- Basic Tables start -->
                         <section class="section">
@@ -178,32 +159,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Graiden</td>
-                                                    <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                                    <td>076 4820 8838</td>
-                                                    <td>Offenburg</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Dale</td>
-                                                    <td>fringilla.euismod.enim@quam.ca</td>
-                                                    <td>0500 527693</td>
-                                                    <td>New Quay</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nathaniel</td>
-                                                    <td>mi.Duis@diam.edu</td>
-                                                    <td>(012165) 76278</td>
-                                                    <td>Grumo Appula</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Darius</td>
-                                                    <td>velit@nec.com</td>
-                                                    <td>0309 690 7871</td>
-                                                    <td>Ways</td>
-                                                </tr>
-
-
+                                                @foreach (var actividad in Model.TodasActividades)
+                                                {
+                                                    <tr>
+                                                        <td>@actividad.ACTIVIDAD.CURSOS.NOMBRE</td>
+                                                        <td>@actividad.ACTIVIDAD.COMPETENCIA.NOMBRE</td>
+                                                        <td>@actividad.NOTA</td>
+                                                        <td>@actividad.COMENTARIO</td>
+                                                    </tr>
+                                                }
                                             </tbody>
                                         </table>
                                     </div>
@@ -231,6 +195,49 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.js"></script>
 
     <script>
+        var competenciasOptions = {
+            series: [{
+                name: 'Competencias',
+                data: [20, 15, 10, 05],
+            }],
+            chart: {
+                height: 330,
+                type: 'radar',
+            },
+            title: {
+                //text: 'Basic Radar Chart'
+            },
+            xaxis: {
+                categories: ['Competencia 1', 'Competencia 2', 'Competencia 3', 'Competencia 4']
+            }
+        };
+        var competencias = new ApexCharts(document.querySelector("#competencias-alumno"), competenciasOptions);
+        competencias.render();
+
+
+
+        const curso = document.getElementById('cursos');
+        curso.addEventListener('change', getDatosCompetencias);
+
+
+        var VBIdAlumno = '@Model.Alumno.ID_ALUMNO'
+        function getDatosCompetencias() {
+            $.post("/Docente/GetChartCompetenciasAlumnoDetalle",
+                { IdCurso: curso.value , IdAlumno: VBIdAlumno },
+                function (response) {
+                    competencias .updateOptions({
+                        series: [{
+                            name: 'Competencias',
+                            data: response.data,
+                        }],
+                        xaxis: {
+                            categories: response.labels
+                        }
+                    })
+                }
+            );
+        }
+
 
         $(document).ready(function () {
             $("#datatable").DataTable({
@@ -311,4 +318,3 @@
         });
     </script>
 }
-
